@@ -95,6 +95,16 @@ section h2{font-size:clamp(40px,5.6vw,68px)}
 .vals b{display:block;font:600 24px var(--display)}
 .vals span{font-size:15px;color:var(--muted)}
 
+
+/* galeria */
+.gal{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:260px 260px;gap:14px}
+.gal figure{position:relative;overflow:hidden;border-radius:20px;background:var(--paper2)}
+.gal figure:first-child{grid-row:1/3}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.gal figure:hover img{transform:scale(1.05)}
+.gal figcaption{position:absolute;left:12px;bottom:12px;background:rgba(251,246,234,.92);border-radius:20px;padding:4px 12px;font-size:13px;font-weight:600}
+@media (max-width:900px){.gal{grid-template-columns:1fr 1fr;grid-template-rows:240px 200px 200px}.gal figure:first-child{grid-column:1/3;grid-row:1}}
+
 /* carta */
 #carta{background:var(--paper2);border-block:1px solid var(--line)}
 .tools{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
@@ -202,7 +212,7 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);color:var(--muted);
 <div class="banner"><b>Muestra de rediseño</b> preparada por Lace con la carta y los precios de su web actual. Los pedidos y reservas de esta página son de prueba.</div>
 <header><div class="wrap nav">
   <a class="logo" href="#top"><img src="logo.png" alt="Logo Trattoria Dolce Vita" width="42" height="46"><span>Dolce Vita<small>Trattoria · Hoyo de Manzanares</small></span></a>
-  <nav aria-label="Principal"><a href="#carta">Carta</a><a href="#casa">Nuestra casa</a><a href="#reservas">Reservas</a><a href="#horario">Horario y contacto</a></nav>
+  <nav aria-label="Principal"><a href="#carta">Carta</a><a href="#casa">Nuestra casa</a><a href="#galeria">Galería</a><a href="#reservas">Reservas</a><a href="#horario">Horario y contacto</a></nav>
   <button class="cartbtn" id="open" type="button">Tu pedido <b id="count">0</b></button>
 </div></header>
 
@@ -239,6 +249,17 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);color:var(--muted);
     <h2>Tradición, sabor y pasión por la buena cocina.</h2>
     <p>Cada pizza se elabora con ingredientes frescos y de calidad, masas preparadas artesanalmente y recetas que combinan el sabor italiano con un toque propio. Un sitio para compartir con familia y amigos.</p>
     <div class="vals"><div><b>Masa artesanal</b><span>Preparada a mano en el local.</span></div><div><b>Producto fresco</b><span>Ingredientes de calidad cada día.</span></div><div><b>Para todos</b><span>Opciones vegetarianas y picantes marcadas.</span></div><div><b>Ambiente acogedor</b><span>Servicio cercano, en mesa o en casa.</span></div></div>
+  </div>
+</div></section>
+
+<section id="galeria" style="padding-top:20px"><div class="wrap">
+  <div class="head"><div><p class="eyebrow">Así es Dolce Vita</p><h2>Del horno a tu mesa.</h2></div></div>
+  <div class="gal">
+    <figure><img src="img/local.jpg" alt="Terraza y entrada de la Trattoria Dolce Vita en Hoyo de Manzanares" loading="lazy"><figcaption>Nuestro local</figcaption></figure>
+    <figure><img src="img/g-burrata.jpg" alt="Pizza con burrata y albahaca" loading="lazy"><figcaption>Burrata y albahaca</figcaption></figure>
+    <figure><img src="img/g-grande.jpg" alt="Pizza con jamón, champiñón y pimiento" loading="lazy"><figcaption>Jamón y champiñón</figcaption></figure>
+    <figure><img src="img/g-verde.jpg" alt="Pizza especial con pesto y queso" loading="lazy"><figcaption>Pizza gourmet</figcaption></figure>
+    <figure><img src="img/g-capri.jpg" alt="Pizza con tomate, mozzarella y aceitunas" loading="lazy"><figcaption>Tomate y mozzarella</figcaption></figure>
   </div>
 </div></section>
 
@@ -291,7 +312,7 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);color:var(--muted);
 </div></section>
 </main>
 
-<footer><div class="wrap">Muestra de rediseño creada por Lace (lacedev.com) para Trattoria Dolce Vita. Carta, precios, horario, textos e imágenes tomados de su web actual. Los alérgenos se han deducido de los ingredientes y el restaurante debe confirmarlos.</div></footer>
+<footer><div class="wrap">Muestra de rediseño creada por Lace (lacedev.com) para Trattoria Dolce Vita. Carta, precios, horario, textos e imágenes tomados de su web actual y de su Instagram. Los alérgenos se han deducido de los ingredientes y el restaurante debe confirmarlos.</div></footer>
 
 <div class="scrim" id="scrim"></div>
 <aside id="drawer" aria-label="Tu pedido">
