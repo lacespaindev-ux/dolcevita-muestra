@@ -96,6 +96,42 @@ section h2{font-size:clamp(40px,5.6vw,68px)}
 .vals span{font-size:15px;color:var(--muted)}
 
 
+
+/* ofertas y constructor */
+#ofertas{padding-top:20px}
+.offers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.offer{border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:12px;background:var(--card);border:1px solid var(--line);position:relative}
+.offer.hot{background:var(--sea);color:#e9f4f5;border-color:var(--sea)}
+.offer.hot h3{color:#fff}.offer.hot p{color:#bcd9dd}
+.offer h3{font-size:34px}
+.offer p{color:var(--muted);font-size:16px}
+.offer .big{font:600 44px/1 var(--display);color:var(--terra)}
+.offer.hot .big{color:var(--lemon)}
+.offer .btn{margin-top:auto;align-self:flex-start;padding:12px 22px;font-size:15px}
+.badge{width:max-content;background:var(--lemon);color:var(--ink);font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border-radius:20px;padding:4px 11px}
+#crea{background:var(--paper2);border-block:1px solid var(--line)}
+.build{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:center}
+.preview{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:30px;text-align:center;position:sticky;top:96px}
+.preview svg{width:min(300px,100%);filter:drop-shadow(0 18px 20px rgba(70,40,10,.3))}
+.preview .pr{font:600 54px/1 var(--display);margin-top:10px;font-variant-numeric:lining-nums tabular-nums}
+.preview .pi{color:var(--muted);font-size:15px;min-height:46px;margin-top:6px}
+.meter{display:flex;gap:6px;justify-content:center;margin:12px 0}
+.meter i{width:34px;height:8px;border-radius:6px;background:var(--line)}
+.meter i.on{background:var(--sea)}.meter i.ex{background:var(--terra)}
+.ings{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0 20px}
+.ing-b{border:1.5px solid var(--line);background:var(--card);border-radius:30px;padding:10px 18px;font:500 15.5px var(--body);cursor:pointer;transition:all .15s}
+.ing-b:hover{border-color:var(--sea)}
+.ing-b[aria-pressed="true"]{background:var(--sea);border-color:var(--sea);color:#fff}
+.ing-b:disabled{opacity:.4;cursor:not-allowed}
+.build .rules{color:var(--muted);max-width:50ch}
+.seg{display:flex;background:var(--paper);border:1px solid var(--line);border-radius:40px;padding:4px;width:max-content;max-width:100%;margin-bottom:18px}
+.seg button{border:0;background:none;padding:9px 20px;border-radius:30px;font:600 15px var(--body);color:var(--muted);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--sea);color:#fff}
+.qrband{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:28px;display:flex;gap:30px;align-items:center;flex-wrap:wrap;margin-top:40px}
+.qrband img{width:132px;height:132px;border-radius:12px;border:1px solid var(--line);padding:8px;background:#fff}
+.qrband h3{font-size:34px}.qrband p{color:var(--muted);max-width:52ch;margin-top:6px}
+@media (max-width:900px){.offers{grid-template-columns:1fr}.build{grid-template-columns:1fr;gap:26px}.preview{position:static}}
+
 /* galeria */
 .gal{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:260px 260px;gap:14px}
 .gal figure{position:relative;overflow:hidden;border-radius:20px;background:var(--paper2)}
@@ -212,7 +248,7 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);color:var(--muted);
 <div class="banner"><b>Muestra de rediseño</b> preparada por Lace con la carta y los precios de su web actual. Los pedidos y reservas de esta página son de prueba.</div>
 <header><div class="wrap nav">
   <a class="logo" href="#top"><img src="logo.png" alt="Logo Trattoria Dolce Vita" width="42" height="46"><span>Dolce Vita<small>Trattoria · Hoyo de Manzanares</small></span></a>
-  <nav aria-label="Principal"><a href="#carta">Carta</a><a href="#casa">Nuestra casa</a><a href="#galeria">Galería</a><a href="#reservas">Reservas</a><a href="#horario">Horario y contacto</a></nav>
+  <nav aria-label="Principal"><a href="#carta">Carta</a><a href="#ofertas">Ofertas</a><a href="#casa">Nuestra casa</a><a href="#galeria">Galería</a><a href="#reservas">Reservas</a><a href="#horario">Horario y contacto</a></nav>
   <button class="cartbtn" id="open" type="button">Tu pedido <b id="count">0</b></button>
 </div></header>
 
@@ -263,6 +299,32 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);color:var(--muted);
   </div>
 </div></section>
 
+<section id="ofertas"><div class="wrap">
+  <div class="head"><div><p class="eyebrow">Ofertas</p><h2>Lo que mueve la mesa.</h2><p class="sub">Promos fáciles de ver y de pedir. El restaurante las cambia cuando quiera.</p></div></div>
+  <div class="offers">
+    <div class="offer hot"><h3>Crea tu pizza</h3><p>Tomate, mozzarella y 3 ingredientes a tu gusto. Hasta 5 en total.</p><div class="big">13,50 €</div><a class="btn lemon" href="#crea">Montar la mía</a></div>
+    <div class="offer"><h3>A domicilio por 1 €</h3><p>Te la llevamos a casa. Pedido mínimo de 15 € fuera del pueblo. También puedes recogerla en el local.</p><div class="big">1 €</div><a class="btn" href="#carta">Pedir ahora</a></div>
+    <div class="offer"><span class="badge">Ejemplo editable</span><h3>Oferta de la semana</h3><p>Aquí el restaurante publica su promo del momento, por ejemplo "2 pizzas medianas + bebida", con foto y fecha de fin.</p><a class="btn ghost" id="ofw" href="#" target="_blank" rel="noopener">Preguntar por la oferta</a></div>
+  </div>
+</div></section>
+
+<section id="crea"><div class="wrap build">
+  <div class="preview">
+    <svg viewBox="0 0 200 200" id="pv" role="img" aria-label="Tu pizza"></svg>
+    <div class="meter" id="meter" aria-hidden="true"></div>
+    <div class="pr" id="bp">13,50 €</div>
+    <p class="pi" id="bi">Elige al menos un ingrediente.</p>
+  </div>
+  <div>
+    <p class="eyebrow">Pizza mitad y mitad</p>
+    <h2>Monta la tuya.</h2>
+    <p class="rules sub">Los primeros 3 ingredientes están incluidos. Puedes añadir hasta 2 más por 1 € cada uno. El precio se actualiza al momento.</p>
+    <div class="ings" id="ings" role="group" aria-label="Ingredientes"></div>
+    <label for="bn" style="max-width:420px">Si la quieres en mitades, dínoslo<input id="bn" placeholder="Ej.: mitad champiñón, mitad bacon"></label>
+    <div class="cta" style="margin-top:20px"><button class="btn" id="badd" type="button">Añadir a mi pedido</button></div>
+  </div>
+</div></section>
+
 <section id="carta"><div class="wrap">
   <div class="head"><div><p class="eyebrow">La carta</p><h2>Elige tu pizza.</h2><p class="sub">Mediana o familiar, con los ingredientes y alérgenos a la vista. Añade lo que quieras y envía el pedido por WhatsApp.</p></div></div>
   <div class="tools">
@@ -281,12 +343,20 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);color:var(--muted);
     <ol class="steps"><li>Elige día, hora y número de personas.</li><li>Pulsa "Pedir mesa" y revisa el resumen.</li><li>Envíalo por WhatsApp y el restaurante te confirma.</li></ol>
   </div>
   <div class="formcard">
+    <div class="seg" role="group" aria-label="Tipo de reserva"><button type="button" id="t1" aria-pressed="true">Mesa</button><button type="button" id="t2" aria-pressed="false">Grupos y eventos</button></div>
     <form id="rf">
       <div class="f2"><label for="rn">Nombre<input id="rn" required placeholder="Marta"></label><label for="rp">Teléfono<input id="rp" required inputmode="tel" placeholder="600 000 000"></label></div>
       <div class="f2"><label for="rd">Fecha<input id="rd" type="date" required></label><label for="rh">Hora<select id="rh"><option>13:30</option><option>14:00</option><option>14:30</option><option selected>20:30</option><option>21:00</option><option>21:30</option></select></label></div>
       <label for="rg">Personas<select id="rg"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></label>
       <label for="rc">Comentarios<textarea id="rc" rows="2" placeholder="Trona, terraza, alergias…"></textarea></label>
       <button class="btn" type="submit">Pedir mesa</button>
+    </form>
+    <form id="ef" hidden>
+      <div class="f2"><label for="en">Nombre<input id="en" required placeholder="Marta"></label><label for="ep">Teléfono<input id="ep" required inputmode="tel" placeholder="600 000 000"></label></div>
+      <div class="f2"><label for="et">Tipo de evento<select id="et"><option>Cumpleaños</option><option>Comida de empresa</option><option>Cena de amigos</option><option>Comunión o bautizo</option><option>Otro</option></select></label><label for="eg">Personas<input id="eg" type="number" min="6" max="60" value="10"></label></div>
+      <label for="ed">Fecha aproximada<input id="ed" type="date" required></label>
+      <label for="ec">Cuéntanos qué necesitas<textarea id="ec" rows="2" placeholder="Pizzas para compartir, tarta, horario…"></textarea></label>
+      <button class="btn" type="submit">Pedir presupuesto</button>
     </form>
     <div class="note" id="rres" hidden></div>
   </div>
@@ -303,6 +373,7 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);color:var(--muted);
     <h2>Dónde estamos.</h2>
     <div class="contact">
       <a class="row2" href="https://www.google.com/maps/search/?api=1&query=Calle+de+la+Frontera+10+Hoyo+de+Manzanares" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><small>Dirección · Cómo llegar</small><span>C. de la Frontera, 10, 28240 Hoyo de Manzanares</span></div></a>
+      <a class="row2" href="https://www.google.com/maps/search/?api=1&query=Trattoria+Dolce+Vita+Hoyo+de+Manzanares" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.250 4.100 1 5.800L12 16.800 6.800 19.600l1-5.800L3.500 9.700l5.900-.9z"/></svg><div><small>Opiniones</small><span>4,5 en Google · 157 opiniones. Ver y dejar la tuya</span></div></a>
       <a class="row2" href="tel:+34641883521"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><div><small>Móvil</small><span>641 883 521</span></div></a>
       <a class="row2" href="tel:+34919354386"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><div><small>Fijo</small><span>91 935 43 86</span></div></a>
       <a class="row2" href="mailto:contacto@dolcevitahoyodemanzanares.com"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg><div><small>Email</small><span>contacto@dolcevitahoyodemanzanares.com</span></div></a>
@@ -310,6 +381,7 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);color:var(--muted);
     </div>
   </div>
 </div></section>
+<div class="wrap"><div class="qrband"><img src="img/qr.svg" alt="Código QR de la carta" width="132" height="132"><div><p class="eyebrow">Carta en el móvil</p><h3>Escanea y pide desde la mesa.</h3><p>Un QR para las mesas, el flyer y el escaparate. Lleva al cliente directo a la carta y al pedido por WhatsApp. En la web final apunta a su dominio.</p></div></div></div>
 </main>
 
 <footer><div class="wrap">Muestra de rediseño creada por Lace (lacedev.com) para Trattoria Dolce Vita. Carta, precios, horario, textos e imágenes tomados de su web actual y de su Instagram. Los alérgenos se han deducido de los ingredientes y el restaurante debe confirmarlos.</div></footer>
@@ -419,12 +491,16 @@ function draw(){
     g.appendChild(d);
   });
 }
+const CUSTOM=[];
+function item(k){const [id,sx]=k.split('|');const i=+sx;
+  if(id==='cust'){const c=CUSTOM[i];return {n:c.n,sub:c.d,unit:c.price,txt:c.n+' ('+c.d+')'}}
+  const p=PIZZAS.find(x=>x.id===id);return {n:p.n,sub:p.one?'Precio único':SIZES[i],unit:p.p[i],txt:p.n+(p.one?'':' ('+SIZES[i]+')')}}
 function renderCart(){
   const L=$('lines');L.innerHTML='';let tot=0,cnt=0;
   Object.entries(cart).forEach(([k,q])=>{
-    const [id,s]=k.split('|');const p=PIZZAS.find(x=>x.id===id);const pr=p.p[+s]*q;tot+=pr;cnt+=q;
+    const it=item(k);const pr=it.unit*q;tot+=pr;cnt+=q;
     const d=document.createElement('div');d.className='line';
-    d.innerHTML=`<div>${p.n}<small>${p.one?'Precio único':SIZES[+s]}</small></div><div class="q"><button type="button" aria-label="Quitar uno">−</button><span>${q}</span><button type="button" aria-label="Añadir uno">+</button></div><strong>${fmt(pr)}</strong>`;
+    d.innerHTML=`<div>${it.n}<small>${it.sub}</small></div><div class="q"><button type="button" aria-label="Quitar uno">−</button><span>${q}</span><button type="button" aria-label="Añadir uno">+</button></div><strong>${fmt(pr)}</strong>`;
     const [m,pl]=d.querySelectorAll('.q button');
     m.onclick=()=>{cart[k]--;if(!cart[k])delete cart[k];renderCart()};pl.onclick=()=>{cart[k]++;renderCart()};
     L.appendChild(d);
@@ -441,7 +517,7 @@ $('mode').onchange=()=>{$('addrl').hidden=$('mode').value!=='A domicilio'};
 $('send').onclick=()=>{
   const r=$('sres');
   if(!Object.keys(cart).length){r.hidden=false;r.textContent='Añade al menos una pizza para hacer el pedido.';return}
-  const lines=Object.entries(cart).map(([k,q])=>{const [id,s]=k.split('|');const p=PIZZAS.find(x=>x.id===id);return q+' x '+p.n+(p.one?'':' ('+SIZES[+s]+')')}).join(', ');
+  const lines=Object.entries(cart).map(([k,q])=>q+' x '+item(k).txt).join(', ');
   const nm=$('oname').value.trim(),ad=$('oaddr').value.trim();
   const msg='Hola, soy '+(nm||'un cliente')+' y quiero hacer un pedido: '+lines+'. '+$('mode').value+(ad&&$('mode').value==='A domicilio'?' ('+ad+')':'')+'. Total: '+$('total').textContent+'.';
   r.hidden=false;r.innerHTML='';
@@ -473,6 +549,39 @@ $('hours').innerHTML=H.map((h,i)=>`<tr class="${i===di?'today':''}"><td>${h[0]}<
     if(nx)$('stxt').textContent='Cerrado ahora · abre hoy a las '+hm(nx[0]);
     else{const n=(di+1)%7;$('stxt').textContent='Cerrado ahora · abre mañana a las '+hm(H[n][1][0][0])}}
 })();
+
+/* constructor */
+const ING=[['Jamón york','ham'],['Champiñón','mus'],['Bacon','sal'],['Salami picante','sal'],['Pollo','oni'],['Carne picada','sal'],['Salchicha ahumada','sal'],['Jamón serrano','ham'],['Cebolla','oni'],['Pimiento rojo','pep'],['Aceitunas negras','pep'],['Alcachofa','pep'],['Piña','avo'],['Atún','oni'],['Anchoas','sal'],['Huevo fresco','che'],['Rúcula','avo'],['Tomate fresco','tom'],['Queso azul','che'],['Queso de cabra','che'],['Parmesano','che'],['Albahaca','bas']];
+const sel=new Set();const MAXI=5,INCL=3,BASE=13.5;
+function drawBuild(){
+  const keys=[...new Set([...sel].map(i=>ING[i][1]))];
+  $('pv').innerHTML=pizzaSVG({id:'creada',t:keys,s:'#c8321f'});
+  const n=sel.size,price=BASE+Math.max(0,n-INCL);
+  $('bp').textContent=fmt(price);
+  $('bi').textContent=n?[...sel].map(i=>ING[i][0]).join(', ')+(n>INCL?' · '+(n-INCL)+(n-INCL>1?' extras':' extra')+' de 1 €':''):'Elige al menos un ingrediente.';
+  $('meter').innerHTML=Array.from({length:MAXI},(_,i)=>`<i class="${i<n?(i>=INCL?'ex':'on'):''}"></i>`).join('');
+  document.querySelectorAll('.ing-b').forEach((b,i)=>{b.setAttribute('aria-pressed',sel.has(i));b.disabled=!sel.has(i)&&n>=MAXI});
+  $('badd').disabled=!n;
+}
+ING.forEach((g,i)=>{const b=document.createElement('button');b.type='button';b.className='ing-b';b.textContent=g[0];b.onclick=()=>{sel.has(i)?sel.delete(i):sel.add(i);drawBuild()};$('ings').appendChild(b)});
+$('badd').onclick=()=>{const n=sel.size;if(!n)return;const note=$('bn').value.trim();
+  CUSTOM.push({n:'Pizza mitad y mitad',d:'Tomate, mozzarella, '+[...sel].map(i=>ING[i][0].toLowerCase()).join(', ')+(note?'. '+note:''),price:BASE+Math.max(0,n-INCL)});
+  const k='cust|'+(CUSTOM.length-1);cart[k]=1;renderCart();const t=$('badd');t.textContent='Añadida ✓';setTimeout(()=>t.textContent='Añadir a mi pedido',1300);openD()};
+drawBuild();
+/* oferta de la semana */
+$('ofw').href='https://wa.me/34641883521?text='+encodeURIComponent('Hola, ¿cuál es la oferta de esta semana?');
+/* pestañas mesa / eventos */
+function tab(w){$('rf').hidden=w!==1;$('ef').hidden=w!==2;$('t1').setAttribute('aria-pressed',w===1);$('t2').setAttribute('aria-pressed',w===2);$('rres').hidden=true}
+$('t1').onclick=()=>tab(1);$('t2').onclick=()=>tab(2);
+$('ed').min=new Date().toISOString().slice(0,10);
+$('ef').onsubmit=e=>{e.preventDefault();const r=$('rres');
+  const f=new Date($('ed').value+'T12:00').toLocaleDateString('es-ES',{day:'numeric',month:'long'});
+  const msg='Hola, quiero pedir presupuesto para un evento: '+$('et').value+' para '+$('eg').value+' personas, sobre el '+f+', a nombre de '+$('en').value+' (tel. '+$('ep').value+').'+($('ec').value?' '+$('ec').value:'');
+  r.hidden=false;r.innerHTML='';
+  const t=document.createElement('p');t.textContent='Resumen: '+msg;
+  const a=document.createElement('a');a.className='btn lemon';a.textContent='Enviar petición por WhatsApp';a.target='_blank';a.rel='noopener';
+  a.href='https://wa.me/34641883521?text='+encodeURIComponent(msg);
+  r.append(t,a)};
 draw();renderCart();
 </script>
 </body>
