@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Trattoria Dolce Vita Muestra</title>
+<title>Trattoria Dolce Vita | Pizzería en Hoyo de Manzanares</title>
+<meta name="description" content="Pizzas de masa artesanal, a domicilio y para llevar en Hoyo de Manzanares. Mira la carta con precios, pide por WhatsApp y reserva mesa.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","name":"Trattoria Dolce Vita","servesCuisine":"Pizza","address":{"@type":"PostalAddress","streetAddress":"Calle de la Frontera 10","postalCode":"28240","addressLocality":"Hoyo de Manzanares","addressCountry":"ES"},"telephone":"+34641883521","hasMenu":"#carta","openingHours":["Mo 09:00-14:30","Mo-Su 20:00-22:30","Fr 20:00-23:00","Sa 09:00-16:00","Su 09:00-16:00"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -94,7 +96,7 @@ footer{padding:36px 0 60px;border-top:1px solid var(--line);color:var(--muted);f
 </style>
 </head>
 <body>
-<div class="banner">Muestra preparada por Lace. La carta y los precios son de ejemplo y se sustituyen por los reales.</div>
+<div class="banner">Muestra preparada por Lace con la carta y los precios de su web actual. Los pedidos y reservas de esta página son de prueba.</div>
 <header><div class="wrap nav">
   <a class="logo" href="#top"><i></i>Dolce Vita</a>
   <nav><a href="#carta">Carta</a><a href="#reservas">Reservas</a><a href="#horario">Horario</a></nav>
@@ -135,18 +137,18 @@ footer{padding:36px 0 60px;border-top:1px solid var(--line);color:var(--muted);f
   </div>
   <div id="horario">
     <h2>Horario</h2>
-    <p class="sub">Cocina abierta a mediodía y por la noche.</p>
+    <p class="sub">Desayunos y aperitivos por la mañana, pizzas por la noche.</p>
     <table class="hours" id="hours"></table>
     <div class="info">
       <span><strong>Dirección</strong> C. de la Frontera, 10, 28240 Hoyo de Manzanares, Madrid</span>
-      <span><strong>Teléfono</strong> 641 883 521 · 91 935 43 86</span>
-      <span>Recogida en local y pedido a domicilio.</span>
+      <span><strong>Móvil</strong> 641 883 521 · <strong>Fijo</strong> 91 935 43 86</span><span><strong>Email</strong> contacto@dolcevitahoyodemanzanares.com</span>
+      <span>Servicio a domicilio por 1 €. Pedido mínimo fuera del pueblo: 15 €. Recogida en el local.</span>
     </div>
   </div>
 </div></section>
 </main>
 
-<footer><div class="wrap">Muestra de página web creada por Lace (lacedev.com) para Trattoria Dolce Vita. Horario y datos de contacto tomados de la ficha pública de Google. Carta, precios y alérgenos de ejemplo.</div></footer>
+<footer><div class="wrap">Muestra de página web creada por Lace (lacedev.com) para Trattoria Dolce Vita. Carta, precios, horario y contacto tomados de su web actual. Los alérgenos se han deducido de los ingredientes y el restaurante debe confirmarlos.</div></footer>
 
 <aside id="drawer" aria-label="Tu pedido">
   <button class="x" id="close" type="button" aria-label="Cerrar">×</button>
@@ -154,22 +156,48 @@ footer{padding:36px 0 60px;border-top:1px solid var(--line);color:var(--muted);f
   <div id="lines"></div>
   <div class="total"><span>Total</span><span id="total">0,00 €</span></div>
   <label for="mode">Cómo lo quieres<select id="mode"><option>Recogida en local</option><option>A domicilio</option></select></label>
-  <button class="btn" id="send" type="button" style="margin-top:12px">Enviar pedido</button>
+  <button class="btn" id="send" type="button" style="margin-top:12px">Preparar pedido por WhatsApp</button>
   <div class="note" id="sres" hidden></div>
 </aside>
 
 <script>
 const PIZZAS=[
- {id:'margarita',n:'Margarita',c:'Clásicas',i:'Tomate, mozzarella y albahaca',p:[8.5,13],al:['Gluten','Lácteos'],t:['bas'],s:'#c8321f'},
- {id:'prosciutto',n:'Jamón y champiñones',c:'Clásicas',i:'Tomate, mozzarella, jamón cocido y champiñones',p:[10,15],al:['Gluten','Lácteos'],t:['ham','mus'],s:'#c8321f'},
- {id:'diavola',n:'Diávola',c:'Carne',i:'Tomate, mozzarella y salami picante',p:[10.5,15.5],al:['Gluten','Lácteos'],t:['sal'],h:1,s:'#c8321f'},
- {id:'bbq',n:'Barbacoa',c:'Carne',i:'Salsa barbacoa, mozzarella, carne picada, bacon y cebolla',p:[11,16.5],al:['Gluten','Lácteos','Mostaza'],t:['sal','oni'],s:'#6b2a14'},
- {id:'quesos',n:'Cuatro quesos',c:'Quesos',i:'Mozzarella, gorgonzola, parmesano y queso de cabra',p:[11,16],al:['Gluten','Lácteos'],t:['che'],v:1,s:'#f1d9a0'},
- {id:'aguacate',n:'Aguacate',c:'Vegetales',i:'Mozzarella, aguacate, tomate cherry y rúcula',p:[11.5,16.5],al:['Gluten','Lácteos'],t:['avo','tom'],v:1,s:'#c8321f'},
- {id:'vegetal',n:'Vegetal',c:'Vegetales',i:'Tomate, mozzarella, pimiento, berenjena, cebolla y champiñones',p:[10,15],al:['Gluten','Lácteos'],t:['pep','mus','oni'],v:1,s:'#c8321f'}
+ {"id": "york", "n": "York", "c": "Clásicas", "i": "Tomate, mozzarella y jamón york", "p": [9.5, 19], "al": ["Gluten", "Lácteos"], "t": ["ham"], "s": "#c8321f"},
+ {"id": "vicenzo", "n": "Vicenzo", "c": "Especiales", "i": "Tomate, mozzarella, jamón york, champiñón, salsa tartufada y alcachofa", "p": [11.5, 20], "al": ["Gluten", "Lácteos"], "t": ["ham", "mus"], "s": "#c8321f"},
+ {"id": "prosciutto", "n": "Prosciutto funghi", "c": "Clásicas", "i": "Tomate, mozzarella, jamón york, champiñón y huevo fresco", "p": [10.5, 20], "al": ["Gluten", "Lácteos", "Huevo"], "t": ["ham", "mus"], "s": "#c8321f"},
+ {"id": "sorrentina", "n": "Sorrentina", "c": "Clásicas", "i": "Tomate, mozzarella, jamón york y piña", "p": [10.5, 19.5], "al": ["Gluten", "Lácteos"], "t": ["ham"], "s": "#c8321f"},
+ {"id": "quesos", "n": "4 Quesos", "c": "Quesos", "i": "Tomate, mozzarella, pecorino, gorgonzola y provolone", "p": [11, 20], "al": ["Gluten", "Lácteos"], "t": ["che"], "v": 1, "s": "#c8321f"},
+ {"id": "caprichosa", "n": "Caprichosa", "c": "Clásicas", "i": "Tomate, mozzarella, jamón york, alcachofa, champiñón y aceituna negra", "p": [11, 19.5], "al": ["Gluten", "Lácteos"], "t": ["ham", "mus"], "s": "#c8321f"},
+ {"id": "stagioni", "n": "4 Stagioni", "c": "Clásicas", "i": "Tomate, mozzarella, jamón york, aceituna, anchoa y champiñón", "p": [11, 19], "al": ["Gluten", "Lácteos", "Pescado"], "t": ["ham", "mus"], "s": "#c8321f"},
+ {"id": "barbacoa", "n": "Barbacoa", "c": "Carne", "i": "Tomate, mozzarella, bacon, pollo, carne picada y salsa barbacoa", "p": [11, 20], "al": ["Gluten", "Lácteos"], "t": ["sal", "oni"], "s": "#6b2a14"},
+ {"id": "vegetariana", "n": "Vegetariana", "c": "Vegetales", "i": "Tomate, mozzarella, verdura fresca mixta, ajo y tomate natural", "p": [11, 19.5], "al": ["Gluten", "Lácteos"], "t": ["pep", "mus", "tom"], "v": 1, "s": "#c8321f"},
+ {"id": "volcano", "n": "Volcano", "c": "Carne", "i": "Tomate, mozzarella, salami picante, aceituna y guindilla verde", "p": [11, 20], "al": ["Gluten", "Lácteos"], "t": ["sal", "pep"], "h": 1, "s": "#c8321f"},
+ {"id": "tartufada", "n": "Tartufada", "c": "Especiales", "i": "Tomate, mozzarella, salsa tartufada, jamón serrano, queso azul y parmesano", "p": [12, 20], "al": ["Gluten", "Lácteos"], "t": ["ham", "che"], "s": "#c8321f"},
+ {"id": "carnivora", "n": "Carnívora", "c": "Carne", "i": "Tomate, mozzarella, salchicha ahumada, bacon y carne boloñesa", "p": [13, 22], "al": ["Gluten", "Lácteos"], "t": ["sal"], "s": "#c8321f"},
+ {"id": "alcachofa", "n": "Alcachofa", "c": "Vegetales", "i": "Salsa de tomate, mozzarella, alcachofa, calabacín, espárrago y cebolla caramelizada", "p": [11, 19.5], "al": ["Gluten", "Lácteos"], "t": ["pep", "oni"], "v": 1, "s": "#c8321f"},
+ {"id": "aguacate", "n": "Aguacate", "c": "Especiales", "i": "Salsa de tomate, mozzarella, jamón serrano, rúcula, aguacate y tomate fresco", "p": [11, 20], "al": ["Gluten", "Lácteos"], "t": ["avo", "tom"], "s": "#c8321f"},
+ {"id": "pazza", "n": "Pazza", "c": "Carne", "i": "Tomate, mozzarella, jamón york, bacon, cebolla y orégano", "p": [11.5, 20], "al": ["Gluten", "Lácteos"], "t": ["ham", "oni"], "s": "#c8321f"},
+ {"id": "cabra", "n": "Cabra", "c": "Quesos", "i": "Salsa de tomate, mozzarella, zanahoria caramelizada, nueces y queso de cabra", "p": [11, 20], "al": ["Gluten", "Lácteos", "Frutos secos"], "t": ["che"], "v": 1, "s": "#c8321f"},
+ {"id": "pollo", "n": "Pollo", "c": "Carne", "i": "Tomate, mozzarella, pollo y cebolla caramelizada", "p": [11.5, 20], "al": ["Gluten", "Lácteos"], "t": ["oni"], "s": "#c8321f"},
+ {"id": "buffalo", "n": "Buffalo", "c": "Quesos", "i": "Tomate, mozzarella, mozzarella de búfala y albahaca fresca", "p": [10, 19.5], "al": ["Gluten", "Lácteos"], "t": ["bas"], "v": 1, "s": "#c8321f"},
+ {"id": "bacon", "n": "Bacon", "c": "Carne", "i": "Tomate, mozzarella, bacon y cebolla fresca", "p": [11, 20], "al": ["Gluten", "Lácteos"], "t": ["sal", "oni"], "s": "#c8321f"},
+ {"id": "carbonara", "n": "Carbonara", "c": "Especiales", "i": "Nata, mozzarella, bacon, champiñón, cebolla y huevo fresco", "p": [11.5, 20], "al": ["Gluten", "Lácteos", "Huevo"], "t": ["mus", "oni"], "s": "#e9d9a8"},
+ {"id": "capri", "n": "Capri", "c": "Quesos", "i": "Nata, mozzarella, parmesano, queso de cabra, pera fresca, queso azul y nueces", "p": [11, 19.5], "al": ["Gluten", "Lácteos", "Frutos secos"], "t": ["che"], "v": 1, "s": "#e9d9a8"},
+ {"id": "calabresa", "n": "Calabresa", "c": "Vegetales", "i": "Nata, mozzarella, calabacín, queso de cabra, salsa pesto y parmesano", "p": [11, 19.5], "al": ["Gluten", "Lácteos", "Frutos secos"], "t": ["pep", "bas"], "v": 1, "s": "#e9d9a8"},
+ {"id": "boscaiola", "n": "Boscaiola", "c": "Especiales", "i": "Nata, mozzarella, salsa de trufa, mixto de setas y jamón york", "p": [11.5, 20], "al": ["Gluten", "Lácteos"], "t": ["mus", "ham"], "s": "#e9d9a8"},
+ {"id": "morcilla", "n": "Morcilla", "c": "Carne", "i": "Salsa de tomate, mozzarella, morcilla, cebolla caramelizada, huevo fresco y alcachofa", "p": [11, 19.5], "al": ["Gluten", "Lácteos", "Huevo"], "t": ["oni"], "s": "#c8321f"},
+ {"id": "nonna", "n": "Nonna", "c": "Carne", "i": "Salsa de tomate, mozzarella, pechuga de pollo, champiñón y ajo", "p": [10.5, 19.5], "al": ["Gluten", "Lácteos"], "t": ["mus"], "s": "#c8321f"},
+ {"id": "campesina", "n": "Campesina", "c": "Carne", "i": "Tomate, mozzarella, salchicha ahumada, aceituna, cebolla fresca, pimiento rojo y huevo fresco", "p": [11.5, 20], "al": ["Gluten", "Lácteos", "Huevo"], "t": ["sal", "pep", "oni"], "s": "#c8321f"},
+ {"id": "serrana", "n": "Serrana", "c": "Especiales", "i": "Tomate, mozzarella, jamón serrano, rúcula, tomate fresco y parmesano", "p": [11, 19], "al": ["Gluten", "Lácteos"], "t": ["tom", "avo"], "s": "#c8321f"},
+ {"id": "napolitana", "n": "Napolitana", "c": "Clásicas", "i": "Tomate, mozzarella, ajo, anchoa, orégano y alcaparras", "p": [11, 19], "al": ["Gluten", "Lácteos", "Pescado"], "t": ["bas"], "s": "#c8321f"},
+ {"id": "golosa", "n": "Golosa", "c": "Carne", "i": "Salsa de tomate, mozzarella, salami picante, cebolla fresca y queso azul", "p": [11, 19], "al": ["Gluten", "Lácteos"], "t": ["sal", "oni"], "h": 1, "s": "#c8321f"},
+ {"id": "tonno", "n": "Tonno", "c": "Clásicas", "i": "Tomate, mozzarella, cebolla fresca y atún", "p": [12, 21], "al": ["Gluten", "Lácteos", "Pescado"], "t": ["oni"], "s": "#c8321f"},
+ {"id": "calzone", "n": "Calzone", "c": "Clásicas", "i": "Tomate, mozzarella, jamón york y champiñón", "p": [11, null], "al": ["Gluten", "Lácteos"], "t": ["ham", "mus"], "s": "#c8321f"},
+ {"id": "calzoneg", "n": "Calzone gigante", "c": "Carne", "i": "Tomate, mozzarella, jamón york, champiñón y carne boloñesa", "p": [null, 20], "al": ["Gluten", "Lácteos"], "t": ["ham", "mus"], "s": "#c8321f"},
+ {"id": "mitad", "n": "Pizza mitad y mitad", "c": "Especiales", "i": "Tomate y mozzarella más 3 ingredientes a elegir (máximo 5 en total). Ingrediente extra: 1 €", "p": [13.5, null], "al": ["Gluten", "Lácteos"], "t": ["ham", "mus", "bas"], "s": "#c8321f", "one": 1}
 ];
-const CATS=['Todas','Clásicas','Carne','Quesos','Vegetales'];
-const SIZES=['Mediana 30 cm','Familiar 38 cm'];
+const CATS=['Todas','Clásicas','Carne','Quesos','Vegetales','Especiales'];
+const SIZES=['Mediana','Familiar'];
 const eur=n=>n.toFixed(2).replace('.',',')+' €';
 const fmt=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(n);
 function rnd(seed){let s=seed;return()=>{s=(s*16807)%2147483647;return s/2147483647}}
@@ -190,18 +218,18 @@ function pizzaSVG(p){
   });
   return o;
 }
-document.getElementById('hero').innerHTML=pizzaSVG(PIZZAS[3]);
+document.getElementById('hero').innerHTML=pizzaSVG(PIZZAS.find(x=>x.id==='barbacoa'));
 let cat='Todas';const size={};const cart={};
 const tabs=document.getElementById('tabs');
 CATS.forEach(c=>{const b=document.createElement('button');b.className='tab';b.type='button';b.textContent=c;b.setAttribute('aria-pressed',c===cat);b.onclick=()=>{cat=c;[...tabs.children].forEach(x=>x.setAttribute('aria-pressed',x.textContent===c));draw()};tabs.appendChild(b)});
 function draw(){
   const g=document.getElementById('grid');g.innerHTML='';
   PIZZAS.filter(p=>cat==='Todas'||p.c===cat).forEach(p=>{
-    const s=size[p.id]||0;
+    const av=[0,1].filter(i=>p.p[i]!=null);const s=size[p.id]!=null&&p.p[size[p.id]]!=null?size[p.id]:av[0];
     const d=document.createElement('article');d.className='card';
     d.innerHTML=`<svg viewBox="0 0 200 200" aria-hidden="true">${pizzaSVG(p)}</svg><h3>${p.n}</h3><p class="ing">${p.i}</p>
     <div class="chips">${p.v?'<span class="chip v">Vegetariana</span>':''}${p.h?'<span class="chip h">Picante</span>':''}${p.al.map(a=>`<span class="chip">${a}</span>`).join('')}</div>
-    <div class="row"><div class="size" role="group" aria-label="Tamaño">${SIZES.map((z,i)=>`<button type="button" data-i="${i}" aria-pressed="${i===s}">${i?'Familiar':'Mediana'}</button>`).join('')}</div><span class="price">${fmt(p.p[s])}</span></div>
+    <div class="row">${p.one?'<span class="chip">Precio único</span>':`<div class="size" role="group" aria-label="Tamaño">${av.map(i=>`<button type="button" data-i="${i}" aria-pressed="${i===s}">${i?'Familiar':'Mediana'}</button>`).join('')}</div>`}<span class="price">${fmt(p.p[s])}</span></div>
     <button class="add" type="button">Añadir al pedido</button>`;
     d.querySelectorAll('.size button').forEach(b=>b.onclick=()=>{size[p.id]=+b.dataset.i;draw()});
     d.querySelector('.add').onclick=()=>{const k=p.id+'|'+s;cart[k]=(cart[k]||0)+1;renderCart();document.getElementById('drawer').classList.add('open')};
@@ -213,7 +241,7 @@ function renderCart(){
   Object.entries(cart).forEach(([k,q])=>{
     const [id,s]=k.split('|');const p=PIZZAS.find(x=>x.id===id);const pr=p.p[+s]*q;tot+=pr;cnt+=q;
     const d=document.createElement('div');d.className='line';
-    d.innerHTML=`<div>${p.n}<small>${SIZES[+s]}</small></div><div class="q"><button type="button" aria-label="Quitar uno">−</button><span>${q}</span><button type="button" aria-label="Añadir uno">+</button></div><strong>${fmt(pr)}</strong>`;
+    d.innerHTML=`<div>${p.n}<small>${p.one?'Precio único':SIZES[+s]}</small></div><div class="q"><button type="button" aria-label="Quitar uno">−</button><span>${q}</span><button type="button" aria-label="Añadir uno">+</button></div><strong>${fmt(pr)}</strong>`;
     const [m,pl]=d.querySelectorAll('.q button');
     m.onclick=()=>{cart[k]--;if(!cart[k])delete cart[k];renderCart()};pl.onclick=()=>{cart[k]++;renderCart()};
     L.appendChild(d);
@@ -226,13 +254,18 @@ document.getElementById('close').onclick=()=>document.getElementById('drawer').c
 document.getElementById('send').onclick=()=>{
   const r=document.getElementById('sres');
   if(!Object.keys(cart).length){r.hidden=false;r.textContent='Añade al menos una pizza para hacer el pedido.';return}
-  const lines=Object.entries(cart).map(([k,q])=>{const [id,s]=k.split('|');const p=PIZZAS.find(x=>x.id===id);return q+' x '+p.n+' ('+SIZES[+s]+')'}).join(', ');
-  r.hidden=false;r.textContent='Pedido de muestra: '+lines+'. '+document.getElementById('mode').value+'. Total '+document.getElementById('total').textContent+'. En la web real, este pedido llega directo al restaurante.';
+  const lines=Object.entries(cart).map(([k,q])=>{const [id,s]=k.split('|');const p=PIZZAS.find(x=>x.id===id);return q+' x '+p.n+(p.one?'':' ('+SIZES[+s]+')')}).join(', ');
+  const msg='Hola, quiero hacer un pedido: '+lines+'. '+document.getElementById('mode').value+'. Total: '+document.getElementById('total').textContent+'.';
+  r.hidden=false;r.innerHTML='';
+  const t=document.createElement('p');t.textContent=msg;
+  const a=document.createElement('a');a.className='btn';a.style.marginTop='10px';a.textContent='Abrir WhatsApp con el pedido';a.target='_blank';a.rel='noopener';
+  a.href='https://wa.me/34641883521?text='+encodeURIComponent(msg);
+  r.append(t,a);
 };
 const rd=document.getElementById('rd');const today=new Date();rd.min=today.toISOString().slice(0,10);
 document.getElementById('rf').onsubmit=e=>{e.preventDefault();const r=document.getElementById('rres');r.hidden=false;
   r.textContent='Solicitud de muestra: mesa para '+rg.value+' el '+rd.value+' a las '+rh.value+' a nombre de '+rn.value+'. En la web real, esta solicitud llega al restaurante y se confirma por WhatsApp o teléfono.'};
-const H=[['Lunes','20:00 – 22:30'],['Martes','20:00 – 22:30'],['Miércoles','20:00 – 22:30'],['Jueves','20:00 – 22:30'],['Viernes','20:00 – 23:00'],['Sábado','13:00 – 16:00 · 20:00 – 23:00'],['Domingo','13:00 – 16:00 · 20:00 – 22:30']];
+const H=[['Lunes','09:00 – 14:30 · 20:00 – 22:30'],['Martes','20:00 – 22:30'],['Miércoles','20:00 – 22:30'],['Jueves','09:00 – 14:30 · 20:00 – 22:30'],['Viernes','09:00 – 14:30 · 20:00 – 23:00'],['Sábado','09:00 – 16:00 · 20:00 – 23:00'],['Domingo','09:00 – 16:00 · 20:00 – 22:30']];
 const di=(new Date().getDay()+6)%7;
 document.getElementById('hours').innerHTML=H.map((h,i)=>`<tr class="${i===di?'today':''}"><td>${h[0]}</td><td>${h[1]}</td></tr>`).join('');
 draw();renderCart();
