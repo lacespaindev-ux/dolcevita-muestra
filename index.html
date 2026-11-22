@@ -3,130 +3,263 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Trattoria Dolce Vita | Pizzería en Hoyo de Manzanares</title>
-<meta name="description" content="Pizzas de masa artesanal, a domicilio y para llevar en Hoyo de Manzanares. Mira la carta con precios, pide por WhatsApp y reserva mesa.">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","name":"Trattoria Dolce Vita","servesCuisine":"Pizza","address":{"@type":"PostalAddress","streetAddress":"Calle de la Frontera 10","postalCode":"28240","addressLocality":"Hoyo de Manzanares","addressCountry":"ES"},"telephone":"+34641883521","hasMenu":"#carta","openingHours":["Mo 09:00-14:30","Mo-Su 20:00-22:30","Fr 20:00-23:00","Sa 09:00-16:00","Su 09:00-16:00"]}</script>
+<title>Trattoria Dolce Vita | Pizzería italiana en Hoyo de Manzanares</title>
+<meta name="description" content="Pizzas de masa artesanal con alma italiana en Hoyo de Manzanares. Mira la carta con precios, pide por WhatsApp, a domicilio o para recoger, y reserva mesa.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","name":"Trattoria Dolce Vita","servesCuisine":["Italiana","Pizza"],"address":{"@type":"PostalAddress","streetAddress":"Calle de la Frontera 10","postalCode":"28240","addressLocality":"Hoyo de Manzanares","addressCountry":"ES"},"telephone":"+34641883521","hasMenu":"#carta","image":"img/banner.jpg"}</script>
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* Plan: horno de leña de noche. Layout: cabecera fija, hero partido, carta en rejilla, pedido en panel lateral, reservas y horario en dos columnas. */
+/* Plan: Costa Amalfitana. Papel crema, azul mar, limon y terracota. Hero con la acuarela fundida con el papel; franja de 4 funciones; carta con buscador y filtros; reserva en bloque azul; pedido en panel lateral con barra fija en movil. */
 :root{
-  --bg:#17110e; --bg2:#211813; --line:#3a2c24;
-  --text:#f4ead9; --muted:#b9a894;
-  --tomato:#e04a33; --basil:#8db35e; --cheese:#f2c14e;
-  --display:'Bricolage Grotesque','Arial Black',sans-serif; --body:'DM Sans',system-ui,sans-serif;
-  color-scheme:dark;
+  --paper:#fbf6ea; --paper2:#f3e9d2; --card:#fffdf8; --line:#e6d8b9;
+  --ink:#17323a; --muted:#566b6f; --sea:#0e5663; --sea2:#0a3f49;
+  --lemon:#efc25c; --lemon2:#f7dc97; --terra:#c4553a; --terra2:#a8432b; --leaf:#45733a;
+  --display:'Cormorant Garamond',Georgia,serif; --body:'Jost',system-ui,sans-serif;
+  --shadow:0 18px 40px -22px rgba(14,86,99,.45);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:17px;line-height:1.5}
+[hidden]{display:none!important}
+html{overflow-x:clip;scroll-behavior:smooth;scroll-padding-top:84px}
+body{overflow-x:clip;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--cheese);outline-offset:3px}
-.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
-h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.02;letter-spacing:-.02em}
-.banner{background:var(--cheese);color:#2a1b08;font-size:14px;font-weight:700;text-align:center;padding:8px 14px}
-header{position:sticky;top:0;z-index:20;background:rgba(23,17,14,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;gap:20px;height:68px}
-.logo{font-family:var(--display);font-weight:800;font-size:22px;text-decoration:none;display:flex;align-items:center;gap:10px}
-.logo img{height:46px;width:auto;display:block}
-nav{margin-left:auto;display:flex;gap:22px;font-weight:500;font-size:15px}
-nav a{text-decoration:none;color:var(--muted)}nav a:hover{color:var(--text)}
-.cartbtn{background:var(--tomato);color:#fff;border:0;border-radius:40px;padding:11px 20px;font:700 15px var(--body);cursor:pointer;display:flex;gap:8px;align-items:center}
-.cartbtn b{background:#fff;color:var(--tomato);border-radius:20px;padding:0 8px;min-width:24px;text-align:center}
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:56px 0 48px}
-.kick{font-weight:700;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--basil);margin-bottom:14px}
-.hero h1{font-size:clamp(44px,7vw,88px);font-weight:800}
-.hero h1 em{font-style:normal;color:var(--tomato)}
-.hero p.lead{color:var(--muted);font-size:19px;max-width:46ch;margin:20px 0 28px}
+img{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--terra);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.02;letter-spacing:-.01em;text-wrap:balance}
+em{font-style:italic}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);margin-bottom:14px}
+.banner{background:var(--sea2);color:#d8ecef;font-size:13.5px;text-align:center;padding:8px 14px}
+.banner b{color:var(--lemon2);font-weight:600}
+header{position:sticky;top:0;z-index:30;background:rgba(251,246,234,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:26px;height:74px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--display);font-weight:700;font-size:26px;line-height:1}
+.logo img{height:48px;width:auto}
+.logo small{display:block;font-family:var(--body);font-weight:500;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+nav{margin-left:auto;display:flex;gap:26px;font-weight:500;font-size:15.5px}
+nav a{text-decoration:none;color:var(--muted);padding:6px 0;border-bottom:2px solid transparent}
+nav a:hover{color:var(--ink);border-color:var(--lemon)}
+.cartbtn{background:var(--sea);color:#fff;border:0;border-radius:40px;padding:12px 22px;font:600 15px var(--body);cursor:pointer;display:flex;gap:10px;align-items:center;transition:background .2s}
+.cartbtn:hover{background:var(--sea2)}
+.cartbtn b{background:var(--lemon);color:var(--ink);border-radius:20px;padding:0 9px;min-width:24px;text-align:center}
+.btn{display:inline-flex;align-items:center;gap:9px;border-radius:40px;padding:15px 28px;font:600 16px var(--body);text-decoration:none;border:2px solid var(--terra);background:var(--terra);color:#fff;cursor:pointer;transition:transform .15s,background .2s}
+.btn:hover{background:var(--terra2);border-color:var(--terra2);transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.btn.lemon{background:var(--lemon);border-color:var(--lemon);color:var(--ink)}
+.btn.lemon:hover{background:var(--lemon2);border-color:var(--lemon2)}
+.btn svg{width:20px;height:20px;flex:none}
+
+/* hero */
+.hero{display:grid;grid-template-columns:.95fr 1.1fr;gap:20px;align-items:center;padding:46px 22px 34px}
+.status{display:inline-flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:40px;padding:8px 16px 8px 14px;font-size:14.5px;font-weight:500;margin-bottom:22px;box-shadow:var(--shadow)}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--leaf);box-shadow:0 0 0 0 rgba(69,115,58,.5);animation:pulse 2s infinite}
+.status.closed .dot{background:var(--terra);animation:none}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(69,115,58,0)}100%{box-shadow:0 0 0 0 rgba(69,115,58,0)}}
+.hero h1{font-size:clamp(50px,7.2vw,98px);font-weight:600}
+.hero h1 em{color:var(--sea);font-weight:500}
+.lead{font-size:19px;color:var(--muted);max-width:44ch;margin:22px 0 30px}
 .cta{display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-block;border-radius:40px;padding:14px 26px;font:700 16px var(--body);text-decoration:none;border:2px solid var(--tomato);background:var(--tomato);color:#fff;cursor:pointer}
-.btn.ghost{background:transparent;color:var(--text);border-color:var(--line)}
-.btn.ghost:hover{border-color:var(--text)}
-.rate{display:flex;gap:18px;margin-top:30px;color:var(--muted);font-size:15px;flex-wrap:wrap}
-.rate strong{color:var(--cheese);font-size:22px;font-family:var(--display)}
-.heropizza{aspect-ratio:1;max-width:460px;margin:0 auto;width:100%;filter:drop-shadow(0 30px 40px rgba(0,0,0,.55));animation:spin 60s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-@media (prefers-reduced-motion:reduce){.heropizza{animation:none}}
-section{padding:56px 0;border-top:1px solid var(--line)}
-section h2{font-size:clamp(34px,5vw,56px);margin-bottom:8px}
-.sub{color:var(--muted);margin-bottom:28px;max-width:60ch}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
-.tab{border:1px solid var(--line);background:var(--bg2);color:var(--text);border-radius:30px;padding:9px 18px;font:500 15px var(--body);cursor:pointer}
-.tab[aria-pressed="true"]{background:var(--text);color:var(--bg);border-color:var(--text);font-weight:700}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px}
-.card{background:var(--bg2);border:1px solid var(--line);border-radius:22px;padding:20px;display:flex;flex-direction:column;gap:12px}
-.card svg{width:150px;height:150px;align-self:center;margin-bottom:2px}
-.card h3{font-size:26px}
-.ing{color:var(--muted);font-size:15px}
+.proof{display:flex;gap:26px;margin-top:34px;flex-wrap:wrap;font-size:14.5px;color:var(--muted)}
+.proof strong{display:block;font:600 34px/1 var(--display);color:var(--ink)}
+.heroart{position:relative}
+.heroart img{width:100%;mix-blend-mode:multiply;border-radius:6px}
+.heroart .tag{position:absolute;right:4%;bottom:4%;background:var(--lemon);color:var(--ink);border-radius:50%;width:118px;height:118px;display:grid;place-items:center;text-align:center;font:600 15px/1.15 var(--display);transform:rotate(-8deg);box-shadow:var(--shadow);padding:10px}
+.heroart .tag b{display:block;font-size:30px;font-weight:700}
+
+/* funciones */
+.feat{background:var(--sea);color:#e9f4f5}
+.feat .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.f{display:flex;flex-direction:column;gap:8px;padding:30px 26px;text-decoration:none;border-left:1px solid rgba(255,255,255,.14);transition:background .2s}
+.f:first-child{border-left:0}
+.f:hover{background:rgba(255,255,255,.07)}
+.f svg{width:34px;height:34px;stroke:var(--lemon);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.f h3{font-size:26px;color:#fff}
+.f p{font-size:15px;color:#bcd9dd;line-height:1.45}
+.f span{font-size:14px;font-weight:600;color:var(--lemon);margin-top:auto;padding-top:6px}
+
+section{padding:84px 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:34px}
+section h2{font-size:clamp(40px,5.6vw,68px)}
+.sub{color:var(--muted);max-width:52ch;margin-top:10px}
+
+/* recomendadas + casa */
+.house{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.house .photo{position:relative}
+.house .photo img{border-radius:240px 240px 18px 18px;aspect-ratio:4/4.3;object-fit:cover;width:100%;box-shadow:var(--shadow)}
+.house .photo .mini{position:absolute;left:-18px;bottom:30px;width:44%;border:6px solid var(--paper);border-radius:16px;aspect-ratio:1;object-fit:cover;box-shadow:var(--shadow)}
+.house p{color:var(--muted);margin-top:16px;max-width:50ch}
+.vals{display:grid;grid-template-columns:1fr 1fr;gap:18px 26px;margin-top:28px}
+.vals div{border-top:2px solid var(--lemon);padding-top:10px}
+.vals b{display:block;font:600 24px var(--display)}
+.vals span{font-size:15px;color:var(--muted)}
+
+/* carta */
+#carta{background:var(--paper2);border-block:1px solid var(--line)}
+.tools{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.search{flex:1 1 260px;position:relative}
+.search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:20px;height:20px;stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round}
+.search input{width:100%;padding:14px 16px 14px 46px;border-radius:40px;border:1px solid var(--line);background:var(--card);font:16px var(--body);color:var(--ink)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 26px}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:30px;padding:9px 19px;font:500 15px var(--body);cursor:pointer;transition:all .15s}
+.tab:hover{border-color:var(--sea)}
+.tab[aria-pressed="true"]{background:var(--sea);color:#fff;border-color:var(--sea)}
+.tab.d[aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf)}
+.tab.d.h[aria-pressed="true"]{background:var(--terra);border-color:var(--terra)}
+.count{color:var(--muted);font-size:14.5px;margin-bottom:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:12px;transition:transform .2s,box-shadow .2s;position:relative}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.card .ph{display:grid;place-items:center;padding:6px 0 2px}
+.card svg.pz{width:164px;height:164px;filter:drop-shadow(0 12px 14px rgba(70,40,10,.28))}
+.card h3{font-size:31px}
+.ing{color:var(--muted);font-size:15px;line-height:1.45}
 .chips{display:flex;gap:6px;flex-wrap:wrap}
-.chip{font-size:12px;font-weight:700;border:1px solid var(--line);border-radius:20px;padding:2px 9px;color:var(--muted)}
-.chip.v{border-color:var(--basil);color:var(--basil)}
-.chip.h{border-color:var(--tomato);color:var(--tomato)}
-.row{display:flex;gap:10px;align-items:center;margin-top:auto}
+.chip{font-size:12px;font-weight:600;border:1px solid var(--line);border-radius:20px;padding:2px 10px;color:var(--muted)}
+.chip.v{border-color:var(--leaf);color:var(--leaf)}
+.chip.h{border-color:var(--terra);color:var(--terra)}
+.star{position:absolute;top:16px;left:16px;background:var(--lemon);color:var(--ink);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border-radius:20px;padding:4px 11px}
+.row{display:flex;gap:10px;align-items:center;margin-top:auto;padding-top:4px}
 .size{display:flex;border:1px solid var(--line);border-radius:30px;overflow:hidden}
-.size button{background:none;border:0;color:var(--muted);padding:8px 12px;font:500 14px var(--body);cursor:pointer}
-.size button[aria-pressed="true"]{background:var(--line);color:var(--text);font-weight:700}
-.price{margin-left:auto;font:800 24px var(--display);font-variant-numeric:tabular-nums}
-.add{background:var(--basil);color:#13200a;border:0;border-radius:30px;padding:10px 16px;font:700 15px var(--body);cursor:pointer}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
-form{display:grid;gap:12px}
-label{font-size:14px;font-weight:700;color:var(--muted);display:grid;gap:5px}
-input,select,textarea{background:var(--bg2);border:1px solid var(--line);border-radius:12px;color:var(--text);padding:12px 14px;font:16px var(--body);width:100%}
-.f2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.hours{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
-.hours td{padding:10px 0;border-bottom:1px solid var(--line)}
+.size button{background:none;border:0;color:var(--muted);padding:8px 13px;font:500 14px var(--body);cursor:pointer}
+.size button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.price{margin-left:auto;font:600 32px var(--display);font-variant-numeric:lining-nums tabular-nums}
+.add{background:var(--sea);color:#fff;border:0;border-radius:30px;padding:12px 16px;font:600 15px var(--body);cursor:pointer;transition:background .2s}
+.add:hover{background:var(--sea2)}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:40px 0}
+
+/* reserva */
+#reservas{background:var(--sea2);color:#e9f4f5;position:relative;overflow:hidden}
+#reservas::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 80% at 100% 0,rgba(239,194,92,.16),transparent 60%);pointer-events:none}
+#reservas .eyebrow{color:var(--lemon)}
+#reservas h2{color:#fff}
+#reservas .sub{color:#bcd9dd}
+.two{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start;position:relative}
+.steps{list-style:none;margin-top:30px;display:grid;gap:16px;counter-reset:s}
+.steps li{display:flex;gap:14px;align-items:flex-start;color:#d8ecef;font-size:16px}
+.steps li::before{counter-increment:s;content:counter(s);flex:none;width:34px;height:34px;border-radius:50%;background:var(--lemon);color:var(--ink);font:700 18px/34px var(--display);text-align:center}
+.formcard{background:var(--card);color:var(--ink);border-radius:26px;padding:30px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+form{display:grid;gap:14px}
+label{font-size:13.5px;font-weight:600;color:var(--muted);display:grid;gap:6px}
+input,select,textarea{background:var(--paper);border:1px solid var(--line);border-radius:12px;color:var(--ink);padding:13px 14px;font:16px var(--body);width:100%}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.note{margin-top:14px;padding:15px 17px;border-radius:14px;background:var(--paper2);border:1px dashed var(--sea);font-size:15px;color:var(--ink)}
+.note .btn{margin-top:10px}
+
+/* horario */
+.info{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.hours{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;margin-top:20px}
+.hours td{padding:12px 0;border-bottom:1px solid var(--line)}
 .hours td:last-child{text-align:right;color:var(--muted)}
-.hours tr.today td{color:var(--cheese);font-weight:700}
-.info{margin-top:22px;display:grid;gap:6px;color:var(--muted)}
-.info strong{color:var(--text)}
-.note{margin-top:14px;padding:14px 16px;border-radius:14px;background:var(--bg2);border:1px dashed var(--basil);font-size:15px}
-footer{padding:36px 0 60px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
-#drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:var(--bg2);border-left:1px solid var(--line);z-index:40;transform:translateX(105%);transition:transform .25s;display:flex;flex-direction:column;padding:22px}
+.hours tr.today td{color:var(--sea);font-weight:600}
+.hours tr.today td:first-child::after{content:" · hoy";color:var(--terra);font-weight:500}
+.contact{display:grid;gap:14px;margin-top:20px}
+.contact a.row2,.contact div.row2{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;text-decoration:none;transition:border-color .2s}
+.contact a.row2:hover{border-color:var(--sea)}
+.contact svg{width:26px;height:26px;flex:none;stroke:var(--sea);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.contact small{display:block;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.contact span{font-weight:500}
+footer{padding:40px 0 110px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+
+/* pedido */
+#drawer{position:fixed;top:0;right:0;height:100%;width:min(430px,100%);background:var(--card);border-left:1px solid var(--line);z-index:60;transform:translateX(105%);transition:transform .28s;display:flex;flex-direction:column;padding:26px;box-shadow:-30px 0 60px -30px rgba(0,0,0,.35)}
 #drawer.open{transform:none}
-#drawer h2{font-size:32px;margin-bottom:14px}
-#lines{flex:1;overflow:auto;display:grid;gap:10px;align-content:start}
-.line{display:flex;gap:10px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:10px}
+#drawer h2{font-size:40px;margin-bottom:4px}
+#lines{flex:1;overflow:auto;display:grid;gap:12px;align-content:start;margin:14px 0}
+.line{display:flex;gap:10px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px}
 .line small{color:var(--muted);display:block}
-.line .q{margin-left:auto;display:flex;gap:6px;align-items:center}
-.line .q button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--text);cursor:pointer}
-.total{display:flex;justify-content:space-between;font:800 26px var(--display);padding:14px 0;font-variant-numeric:tabular-nums}
-.x{background:none;border:0;color:var(--muted);position:absolute;top:18px;right:20px;font-size:28px;cursor:pointer}
-@media (max-width:820px){.hero,.two{grid-template-columns:1fr}.heropizza{max-width:300px;order:-1}nav{display:none}.cartbtn{margin-left:auto}}
+.line .q{margin-left:auto;display:flex;gap:8px;align-items:center}
+.line .q button{width:30px;height:30px;border-radius:50%;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;font-size:16px}
+.total{display:flex;justify-content:space-between;font:600 34px var(--display);padding:10px 0;font-variant-numeric:lining-nums tabular-nums}
+.x{background:none;border:0;color:var(--muted);position:absolute;top:18px;right:22px;font-size:32px;cursor:pointer}
+#drawer .fld{display:grid;gap:10px;margin-bottom:6px}
+.scrim{position:fixed;inset:0;background:rgba(10,63,73,.45);z-index:55;opacity:0;pointer-events:none;transition:opacity .25s}
+.scrim.on{opacity:1;pointer-events:auto}
+.bar{position:fixed;left:14px;right:14px;bottom:14px;z-index:50;background:var(--sea);color:#fff;border:0;border-radius:18px;padding:15px 20px;font:600 16px var(--body);display:none;justify-content:space-between;align-items:center;box-shadow:0 18px 36px -12px rgba(0,0,0,.5);cursor:pointer}
+.bar.on{display:flex}
+.bar b{background:var(--lemon);color:var(--ink);border-radius:20px;padding:0 10px;margin-right:8px}
+.wa{position:fixed;right:18px;bottom:18px;z-index:45;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 14px 28px -10px rgba(0,0,0,.5);transition:transform .2s}
+.wa:hover{transform:scale(1.07)}
+.wa svg{width:30px;height:30px;fill:#fff}
+.bar.on~.wa{bottom:92px}
+
+@media (max-width:900px){
+  .hero,.house,.two,.info{grid-template-columns:minmax(0,1fr);gap:34px}
+  .contact span{overflow-wrap:anywhere}
+  .logo small{display:none}.cartbtn{white-space:nowrap;padding:11px 18px}.status{font-size:13.5px}
+  .feat .wrap{grid-template-columns:1fr 1fr}
+  .f:nth-child(3){border-left:0}.f:nth-child(n+3){border-top:1px solid rgba(255,255,255,.14)}
+  nav{display:none}.cartbtn{margin-left:auto}
+  section{padding:60px 0}
+  .house .photo .mini{left:8px}
+  .f2{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
-<link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
-<div class="banner">Muestra preparada por Lace con la carta y los precios de su web actual. Los pedidos y reservas de esta página son de prueba.</div>
+<div class="banner"><b>Muestra de rediseño</b> preparada por Lace con la carta y los precios de su web actual. Los pedidos y reservas de esta página son de prueba.</div>
 <header><div class="wrap nav">
-  <a class="logo" href="#top"><img src="logo.png" alt="Logo Trattoria Dolce Vita" width="42" height="46">Dolce Vita</a>
-  <nav><a href="#carta">Carta</a><a href="#reservas">Reservas</a><a href="#horario">Horario</a></nav>
+  <a class="logo" href="#top"><img src="logo.png" alt="Logo Trattoria Dolce Vita" width="42" height="46"><span>Dolce Vita<small>Trattoria · Hoyo de Manzanares</small></span></a>
+  <nav aria-label="Principal"><a href="#carta">Carta</a><a href="#casa">Nuestra casa</a><a href="#reservas">Reservas</a><a href="#horario">Horario y contacto</a></nav>
   <button class="cartbtn" id="open" type="button">Tu pedido <b id="count">0</b></button>
 </div></header>
 
 <main id="top">
 <div class="wrap hero">
   <div>
-    <p class="kick">Pizzería en Hoyo de Manzanares</p>
-    <h1>Pizza para <em>cenar</em> aquí o en tu casa.</h1>
-    <p class="lead">Masa trabajada, buen producto y raciones generosas. Mira la carta, monta tu pedido y reserva mesa sin llamar.</p>
-    <div class="cta"><a class="btn" href="#carta">Ver la carta</a><a class="btn ghost" href="#reservas">Reservar mesa</a></div>
-    <div class="rate"><span><strong>4,5</strong> en Google</span><span><strong>157</strong> opiniones</span><span>Calle de la Frontera, 10</span></div>
+    <div class="status" id="status" role="status"><i class="dot"></i><span id="stxt">Comprobando horario…</span></div>
+    <p class="eyebrow">Pizzería italiana · Hoyo de Manzanares</p>
+    <h1>La <em>dolce vita</em>, hecha pizza.</h1>
+    <p class="lead">Masas preparadas artesanalmente e ingredientes frescos, con el sabor de la Costa Amalfitana. Cena en el local, recoge tu pedido o te lo llevamos a casa por 1 €.</p>
+    <div class="cta"><a class="btn" href="#carta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14l-1.2 11a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>Hacer mi pedido</a><a class="btn ghost" href="#reservas">Reservar mesa</a></div>
+    <div class="proof"><span><strong>4,5</strong>valoración en Google</span><span><strong>157</strong>opiniones</span><span><strong>33</strong>pizzas en carta</span></div>
   </div>
-  <svg class="heropizza" id="hero" viewBox="0 0 200 200" role="img" aria-label="Pizza vista desde arriba"></svg>
+  <div class="heroart">
+    <img src="img/costa.jpg" alt="Acuarela de la Costa Amalfitana al atardecer" width="1024" height="585">
+    <div class="tag"><span>Domicilio<b>1 €</b></span></div>
+  </div>
 </div>
 
+<div class="feat"><div class="wrap">
+  <a class="f" href="#carta"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 1 18 0c0 5-4 9-9 9H3z"/><path d="M8.5 10.5h.01M12 8h.01M15 11h.01M11 13.5h.01"/></svg><h3>Pide online</h3><p>Elige tamaño, mira alérgenos y envía el pedido por WhatsApp.</p><span>Ver la carta →</span></a>
+  <a class="f" href="#reservas"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><h3>Reserva en un minuto</h3><p>Fecha, hora y personas. Te confirman la mesa sin esperar al teléfono.</p><span>Reservar mesa →</span></a>
+  <a class="f" href="#horario"><svg viewBox="0 0 24 24"><path d="M3 15V8h11v7M14 11h4l3 3v1h-7"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg><h3>A domicilio por 1 €</h3><p>Mínimo de 15 € fuera del pueblo. También puedes recoger en el local.</p><span>Ver condiciones →</span></a>
+  <a class="f" href="#horario"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><h3>Abierto de día y de noche</h3><p>Desayunos y aperitivos por la mañana, pizzas por la noche.</p><span>Ver horario →</span></a>
+</div></div>
+
+<section id="casa"><div class="wrap house">
+  <div class="photo">
+    <img src="img/banner.jpg" alt="Pizza artesanal con tomate, aceitunas, champiñón y albahaca" width="1200" height="675" loading="lazy">
+    <img class="mini" src="img/foto2.jpg" alt="Tomate fresco con mozzarella y albahaca" width="600" height="416" loading="lazy">
+  </div>
+  <div>
+    <p class="eyebrow">Nuestra casa</p>
+    <h2>Tradición, sabor y pasión por la buena cocina.</h2>
+    <p>Cada pizza se elabora con ingredientes frescos y de calidad, masas preparadas artesanalmente y recetas que combinan el sabor italiano con un toque propio. Un sitio para compartir con familia y amigos.</p>
+    <div class="vals"><div><b>Masa artesanal</b><span>Preparada a mano en el local.</span></div><div><b>Producto fresco</b><span>Ingredientes de calidad cada día.</span></div><div><b>Para todos</b><span>Opciones vegetarianas y picantes marcadas.</span></div><div><b>Ambiente acogedor</b><span>Servicio cercano, en mesa o en casa.</span></div></div>
+  </div>
+</div></section>
+
 <section id="carta"><div class="wrap">
-  <h2>La carta</h2>
-  <p class="sub">Elige tamaño, mira los ingredientes y los alérgenos de cada pizza y añádela a tu pedido.</p>
+  <div class="head"><div><p class="eyebrow">La carta</p><h2>Elige tu pizza.</h2><p class="sub">Mediana o familiar, con los ingredientes y alérgenos a la vista. Añade lo que quieras y envía el pedido por WhatsApp.</p></div></div>
+  <div class="tools">
+    <label class="search" for="q"><span style="position:absolute;left:-9999px">Buscar pizza o ingrediente</span><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="q" type="search" placeholder="Busca por nombre o ingrediente: trufa, cabra, bacon…" autocomplete="off"></label>
+  </div>
   <div class="tabs" id="tabs" role="group" aria-label="Filtrar carta"></div>
+  <p class="count" id="cnt" aria-live="polite"></p>
   <div class="grid" id="grid"></div>
 </div></section>
 
 <section id="reservas"><div class="wrap two">
   <div>
-    <h2>Reserva tu mesa</h2>
-    <p class="sub">Rellena el formulario y el restaurante confirma la mesa.</p>
+    <p class="eyebrow">Reservas</p>
+    <h2>Tu mesa, sin llamar.</h2>
+    <p class="sub">Dinos cuándo vienes y cuántos sois. Preparamos el mensaje y lo envías por WhatsApp en un toque.</p>
+    <ol class="steps"><li>Elige día, hora y número de personas.</li><li>Pulsa "Pedir mesa" y revisa el resumen.</li><li>Envíalo por WhatsApp y el restaurante te confirma.</li></ol>
+  </div>
+  <div class="formcard">
     <form id="rf">
       <div class="f2"><label for="rn">Nombre<input id="rn" required placeholder="Marta"></label><label for="rp">Teléfono<input id="rp" required inputmode="tel" placeholder="600 000 000"></label></div>
       <div class="f2"><label for="rd">Fecha<input id="rd" type="date" required></label><label for="rh">Hora<select id="rh"><option>13:30</option><option>14:00</option><option>14:30</option><option selected>20:30</option><option>21:00</option><option>21:30</option></select></label></div>
@@ -136,30 +269,47 @@ footer{padding:36px 0 60px;border-top:1px solid var(--line);color:var(--muted);f
     </form>
     <div class="note" id="rres" hidden></div>
   </div>
-  <div id="horario">
-    <h2>Horario</h2>
-    <p class="sub">Desayunos y aperitivos por la mañana, pizzas por la noche.</p>
+</div></section>
+
+<section id="horario"><div class="wrap info">
+  <div>
+    <p class="eyebrow">Horario</p>
+    <h2>Cuándo vernos.</h2>
     <table class="hours" id="hours"></table>
-    <div class="info">
-      <span><strong>Dirección</strong> C. de la Frontera, 10, 28240 Hoyo de Manzanares, Madrid</span>
-      <span><strong>Móvil</strong> 641 883 521 · <strong>Fijo</strong> 91 935 43 86</span><span><strong>Email</strong> contacto@dolcevitahoyodemanzanares.com</span>
-      <span>Servicio a domicilio por 1 €. Pedido mínimo fuera del pueblo: 15 €. Recogida en el local.</span>
+  </div>
+  <div>
+    <p class="eyebrow">Contacto</p>
+    <h2>Dónde estamos.</h2>
+    <div class="contact">
+      <a class="row2" href="https://www.google.com/maps/search/?api=1&query=Calle+de+la+Frontera+10+Hoyo+de+Manzanares" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><small>Dirección · Cómo llegar</small><span>C. de la Frontera, 10, 28240 Hoyo de Manzanares</span></div></a>
+      <a class="row2" href="tel:+34641883521"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><div><small>Móvil</small><span>641 883 521</span></div></a>
+      <a class="row2" href="tel:+34919354386"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><div><small>Fijo</small><span>91 935 43 86</span></div></a>
+      <a class="row2" href="mailto:contacto@dolcevitahoyodemanzanares.com"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg><div><small>Email</small><span>contacto@dolcevitahoyodemanzanares.com</span></div></a>
+      <div class="row2"><svg viewBox="0 0 24 24"><path d="M3 15V8h11v7M14 11h4l3 3v1h-7"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg><div><small>Servicio a domicilio</small><span>1 €. Pedido mínimo fuera del pueblo: 15 €. Recogida en el local.</span></div></div>
     </div>
   </div>
 </div></section>
 </main>
 
-<footer><div class="wrap">Muestra de página web creada por Lace (lacedev.com) para Trattoria Dolce Vita. Carta, precios, horario y contacto tomados de su web actual. Los alérgenos se han deducido de los ingredientes y el restaurante debe confirmarlos.</div></footer>
+<footer><div class="wrap">Muestra de rediseño creada por Lace (lacedev.com) para Trattoria Dolce Vita. Carta, precios, horario, textos e imágenes tomados de su web actual. Los alérgenos se han deducido de los ingredientes y el restaurante debe confirmarlos.</div></footer>
 
+<div class="scrim" id="scrim"></div>
 <aside id="drawer" aria-label="Tu pedido">
   <button class="x" id="close" type="button" aria-label="Cerrar">×</button>
   <h2>Tu pedido</h2>
+  <p class="ing">Revisa y envíalo por WhatsApp. El restaurante lo confirma.</p>
   <div id="lines"></div>
   <div class="total"><span>Total</span><span id="total">0,00 €</span></div>
-  <label for="mode">Cómo lo quieres<select id="mode"><option>Recogida en local</option><option>A domicilio</option></select></label>
-  <button class="btn" id="send" type="button" style="margin-top:12px">Preparar pedido por WhatsApp</button>
+  <div class="fld">
+    <label for="mode">Cómo lo quieres<select id="mode"><option>Recogida en local</option><option>A domicilio</option></select></label>
+    <label for="oname">Tu nombre<input id="oname" placeholder="Marta"></label>
+    <label for="oaddr" id="addrl" hidden>Dirección de entrega<input id="oaddr" placeholder="Calle y número"></label>
+  </div>
+  <button class="btn" id="send" type="button" style="margin-top:8px;justify-content:center">Preparar pedido por WhatsApp</button>
   <div class="note" id="sres" hidden></div>
 </aside>
+<button class="bar" id="bar" type="button"><span><b id="bc">0</b>Ver mi pedido</span><span id="bt">0,00 €</span></button>
+<a class="wa" href="https://wa.me/34641883521" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 1.8a8.2 8.2 0 1 1-4.3 15.2l-.3-.2-2.9.8.8-2.8-.2-.3A8.2 8.2 0 0 1 12 3.8zM8.6 7.6c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.4s1 2.800 1.200 3c.1.2 2 3.200 5 4.400 2.500 1 3 .8 3.500.7.600-.1 1.700-.7 1.900-1.400.2-.7.2-1.200.2-1.400-.1-.1-.3-.2-.6-.3l-1.800-.9c-.2-.1-.4-.1-.6.1l-.8 1c-.2.200-.3.200-.6.100-.9-.4-2-1-2.900-2.100-.7-.8-1.200-1.700-1.300-2-.1-.2 0-.4.100-.5l.4-.5c.1-.1.2-.3.300-.4.100-.2 0-.3 0-.5l-.8-2c-.2-.5-.4-.4-.6-.4z"/></svg></a>
 
 <script>
 const PIZZAS=[
@@ -197,7 +347,6 @@ const PIZZAS=[
  {"id": "calzoneg", "n": "Calzone gigante", "c": "Carne", "i": "Tomate, mozzarella, jamón york, champiñón y carne boloñesa", "p": [null, 20], "al": ["Gluten", "Lácteos"], "t": ["ham", "mus"], "s": "#c8321f"},
  {"id": "mitad", "n": "Pizza mitad y mitad", "c": "Especiales", "i": "Tomate y mozzarella más 3 ingredientes a elegir (máximo 5 en total). Ingrediente extra: 1 €", "p": [13.5, null], "al": ["Gluten", "Lácteos"], "t": ["ham", "mus", "bas"], "s": "#c8321f", "one": 1}
 ];
-const CATS=['Todas','Clásicas','Carne','Quesos','Vegetales','Especiales'];
 const SIZES=['Mediana','Familiar'];
 const eur=n=>n.toFixed(2).replace('.',',')+' €';
 const fmt=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(n);
@@ -219,26 +368,38 @@ function pizzaSVG(p){
   });
   return o;
 }
-document.getElementById('hero').innerHTML=pizzaSVG(PIZZAS.find(x=>x.id==='barbacoa'));
-let cat='Todas';const size={};const cart={};
-const tabs=document.getElementById('tabs');
-CATS.forEach(c=>{const b=document.createElement('button');b.className='tab';b.type='button';b.textContent=c;b.setAttribute('aria-pressed',c===cat);b.onclick=()=>{cat=c;[...tabs.children].forEach(x=>x.setAttribute('aria-pressed',x.textContent===c));draw()};tabs.appendChild(b)});
+const STARS=['buffalo','tartufada','quesos','serrana','boscaiola','barbacoa'];
+const CATS=['Todas','Clásicas','Carne','Quesos','Vegetales','Especiales'];
+let cat='Todas',onlyV=false,onlyH=false,term='';const size={};const cart={};
+const $=id=>document.getElementById(id);
+const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+$('q').oninput=e=>{term=norm(e.target.value.trim());draw()};
+const tabs=$('tabs');
+function mkTab(label,cls,on){const b=document.createElement('button');b.className='tab '+(cls||'');b.type='button';b.textContent=label;b.setAttribute('aria-pressed',false);b.onclick=()=>on(b);tabs.appendChild(b);return b}
+const catBtns=CATS.map(c=>mkTab(c,'',()=>{cat=c;sync();draw()}));
+const vb=mkTab('Vegetarianas','d',()=>{onlyV=!onlyV;sync();draw()});
+const hb=mkTab('Picantes','d h',()=>{onlyH=!onlyH;sync();draw()});
+function sync(){catBtns.forEach((b,i)=>b.setAttribute('aria-pressed',CATS[i]===cat));vb.setAttribute('aria-pressed',onlyV);hb.setAttribute('aria-pressed',onlyH)}
+sync();
 function draw(){
-  const g=document.getElementById('grid');g.innerHTML='';
-  PIZZAS.filter(p=>cat==='Todas'||p.c===cat).forEach(p=>{
+  const g=$('grid');g.innerHTML='';
+  const list=PIZZAS.filter(p=>(cat==='Todas'||p.c===cat)&&(!onlyV||p.v)&&(!onlyH||p.h)&&(!term||norm(p.n+' '+p.i).includes(term)));
+  $('cnt').textContent=list.length+(list.length===1?' pizza':' pizzas');
+  if(!list.length){g.innerHTML='<p class="empty">No hay ninguna pizza con ese filtro. Prueba con otra búsqueda.</p>';return}
+  list.forEach(p=>{
     const av=[0,1].filter(i=>p.p[i]!=null);const s=size[p.id]!=null&&p.p[size[p.id]]!=null?size[p.id]:av[0];
     const d=document.createElement('article');d.className='card';
-    d.innerHTML=`<svg viewBox="0 0 200 200" aria-hidden="true">${pizzaSVG(p)}</svg><h3>${p.n}</h3><p class="ing">${p.i}</p>
+    d.innerHTML=`${STARS.includes(p.id)?'<span class="star">Recomendada</span>':''}<div class="ph"><svg class="pz" viewBox="0 0 200 200" aria-hidden="true">${pizzaSVG(p)}</svg></div><h3>${p.n}</h3><p class="ing">${p.i}</p>
     <div class="chips">${p.v?'<span class="chip v">Vegetariana</span>':''}${p.h?'<span class="chip h">Picante</span>':''}${p.al.map(a=>`<span class="chip">${a}</span>`).join('')}</div>
     <div class="row">${p.one?'<span class="chip">Precio único</span>':`<div class="size" role="group" aria-label="Tamaño">${av.map(i=>`<button type="button" data-i="${i}" aria-pressed="${i===s}">${i?'Familiar':'Mediana'}</button>`).join('')}</div>`}<span class="price">${fmt(p.p[s])}</span></div>
     <button class="add" type="button">Añadir al pedido</button>`;
     d.querySelectorAll('.size button').forEach(b=>b.onclick=()=>{size[p.id]=+b.dataset.i;draw()});
-    d.querySelector('.add').onclick=()=>{const k=p.id+'|'+s;cart[k]=(cart[k]||0)+1;renderCart();document.getElementById('drawer').classList.add('open')};
+    d.querySelector('.add').onclick=e=>{const k=p.id+'|'+s;cart[k]=(cart[k]||0)+1;renderCart();const t=e.currentTarget;t.textContent='Añadida ✓';setTimeout(()=>t.textContent='Añadir al pedido',1200)};
     g.appendChild(d);
   });
 }
 function renderCart(){
-  const L=document.getElementById('lines');L.innerHTML='';let tot=0,cnt=0;
+  const L=$('lines');L.innerHTML='';let tot=0,cnt=0;
   Object.entries(cart).forEach(([k,q])=>{
     const [id,s]=k.split('|');const p=PIZZAS.find(x=>x.id===id);const pr=p.p[+s]*q;tot+=pr;cnt+=q;
     const d=document.createElement('div');d.className='line';
@@ -248,27 +409,49 @@ function renderCart(){
     L.appendChild(d);
   });
   if(!cnt)L.innerHTML='<p class="ing">Todavía no has añadido nada. Elige una pizza de la carta.</p>';
-  document.getElementById('total').textContent=fmt(tot);document.getElementById('count').textContent=cnt;
+  $('total').textContent=fmt(tot);$('count').textContent=cnt;$('bc').textContent=cnt;$('bt').textContent=fmt(tot);
+  $('bar').classList.toggle('on',cnt>0);
 }
-document.getElementById('open').onclick=()=>document.getElementById('drawer').classList.add('open');
-document.getElementById('close').onclick=()=>document.getElementById('drawer').classList.remove('open');
-document.getElementById('send').onclick=()=>{
-  const r=document.getElementById('sres');
+const dr=$('drawer'),sc=$('scrim');
+const openD=()=>{dr.classList.add('open');sc.classList.add('on')},closeD=()=>{dr.classList.remove('open');sc.classList.remove('on')};
+$('open').onclick=openD;$('bar').onclick=openD;$('close').onclick=closeD;sc.onclick=closeD;
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeD()});
+$('mode').onchange=()=>{$('addrl').hidden=$('mode').value!=='A domicilio'};
+$('send').onclick=()=>{
+  const r=$('sres');
   if(!Object.keys(cart).length){r.hidden=false;r.textContent='Añade al menos una pizza para hacer el pedido.';return}
   const lines=Object.entries(cart).map(([k,q])=>{const [id,s]=k.split('|');const p=PIZZAS.find(x=>x.id===id);return q+' x '+p.n+(p.one?'':' ('+SIZES[+s]+')')}).join(', ');
-  const msg='Hola, quiero hacer un pedido: '+lines+'. '+document.getElementById('mode').value+'. Total: '+document.getElementById('total').textContent+'.';
+  const nm=$('oname').value.trim(),ad=$('oaddr').value.trim();
+  const msg='Hola, soy '+(nm||'un cliente')+' y quiero hacer un pedido: '+lines+'. '+$('mode').value+(ad&&$('mode').value==='A domicilio'?' ('+ad+')':'')+'. Total: '+$('total').textContent+'.';
   r.hidden=false;r.innerHTML='';
   const t=document.createElement('p');t.textContent=msg;
-  const a=document.createElement('a');a.className='btn';a.style.marginTop='10px';a.textContent='Abrir WhatsApp con el pedido';a.target='_blank';a.rel='noopener';
+  const a=document.createElement('a');a.className='btn';a.textContent='Abrir WhatsApp con el pedido';a.target='_blank';a.rel='noopener';
   a.href='https://wa.me/34641883521?text='+encodeURIComponent(msg);
   r.append(t,a);
 };
-const rd=document.getElementById('rd');const today=new Date();rd.min=today.toISOString().slice(0,10);
-document.getElementById('rf').onsubmit=e=>{e.preventDefault();const r=document.getElementById('rres');r.hidden=false;
-  r.textContent='Solicitud de muestra: mesa para '+rg.value+' el '+rd.value+' a las '+rh.value+' a nombre de '+rn.value+'. En la web real, esta solicitud llega al restaurante y se confirma por WhatsApp o teléfono.'};
-const H=[['Lunes','09:00 – 14:30 · 20:00 – 22:30'],['Martes','20:00 – 22:30'],['Miércoles','20:00 – 22:30'],['Jueves','09:00 – 14:30 · 20:00 – 22:30'],['Viernes','09:00 – 14:30 · 20:00 – 23:00'],['Sábado','09:00 – 16:00 · 20:00 – 23:00'],['Domingo','09:00 – 16:00 · 20:00 – 22:30']];
-const di=(new Date().getDay()+6)%7;
-document.getElementById('hours').innerHTML=H.map((h,i)=>`<tr class="${i===di?'today':''}"><td>${h[0]}</td><td>${h[1]}</td></tr>`).join('');
+const rd=$('rd');rd.min=new Date().toISOString().slice(0,10);
+$('rf').onsubmit=e=>{e.preventDefault();const r=$('rres');
+  const f=new Date(rd.value+'T12:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
+  const msg='Hola, quiero reservar mesa para '+$('rg').value+' personas el '+f+' a las '+$('rh').value+', a nombre de '+$('rn').value+' (tel. '+$('rp').value+').'+($('rc').value?' Comentarios: '+$('rc').value:'');
+  r.hidden=false;r.innerHTML='';
+  const t=document.createElement('p');t.textContent='Resumen: '+msg;
+  const a=document.createElement('a');a.className='btn lemon';a.textContent='Enviar reserva por WhatsApp';a.target='_blank';a.rel='noopener';
+  a.href='https://wa.me/34641883521?text='+encodeURIComponent(msg);
+  r.append(t,a)};
+const H=[['Lunes',[[540,870],[1200,1350]]],['Martes',[[1200,1350]]],['Miércoles',[[1200,1350]]],['Jueves',[[540,870],[1200,1350]]],['Viernes',[[540,870],[1200,1380]]],['Sábado',[[540,960],[1200,1380]]],['Domingo',[[540,960],[1200,1350]]]];
+const hm=m=>String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0');
+const parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Madrid',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date());
+const get=t=>parts.find(p=>p.type===t).value;
+const di=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].indexOf(get('weekday'));const now=(+get('hour')%24)*60+(+get('minute'));
+$('hours').innerHTML=H.map((h,i)=>`<tr class="${i===di?'today':''}"><td>${h[0]}</td><td>${h[1].map(r=>hm(r[0])+' – '+hm(r[1])).join(' · ')}</td></tr>`).join('');
+(function(){
+  const cur=H[di][1].find(r=>now>=r[0]&&now<r[1]);const st=$('status');
+  if(cur){$('stxt').textContent='Abierto ahora · cierra a las '+hm(cur[1])}
+  else{st.classList.add('closed');
+    const nx=H[di][1].find(r=>r[0]>now);
+    if(nx)$('stxt').textContent='Cerrado ahora · abre hoy a las '+hm(nx[0]);
+    else{const n=(di+1)%7;$('stxt').textContent='Cerrado ahora · abre mañana a las '+hm(H[n][1][0][0])}}
+})();
 draw();renderCart();
 </script>
 </body>
