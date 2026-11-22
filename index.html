@@ -51,6 +51,21 @@ nav a:hover{color:var(--ink);border-color:var(--lemon)}
 .btn.lemon:hover{background:var(--lemon2);border-color:var(--lemon2)}
 .btn svg{width:20px;height:20px;flex:none}
 
+
+.burger{display:none;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--card);cursor:pointer;align-items:center;justify-content:center;flex:none}
+.burger span,.burger span::before,.burger span::after{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px;position:relative;transition:transform .25s,background .2s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.burger[aria-expanded="true"] span{background:transparent}
+.burger[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
+#menu{display:none;position:absolute;left:0;right:0;top:100%;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 24px 40px -24px rgba(14,86,99,.45);padding:8px 22px 20px;opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .2s,transform .2s}
+#menu.open{opacity:1;transform:none;pointer-events:auto}
+#menu a{display:flex;justify-content:space-between;align-items:center;padding:15px 2px;border-bottom:1px solid var(--line);text-decoration:none;font:600 19px var(--display);color:var(--ink)}
+#menu a::after{content:"→";font:500 16px var(--body);color:var(--terra)}
+#menu a:last-of-type{border-bottom:0}
+#menu .btn{width:100%;justify-content:center;margin-top:10px}
+
 /* hero */
 .hero{display:grid;grid-template-columns:.95fr 1.1fr;gap:20px;align-items:center;padding:46px 22px 34px}
 .status{display:inline-flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:40px;padding:8px 16px 8px 14px;font-size:14.5px;font-weight:500;margin-bottom:22px;box-shadow:var(--shadow)}
@@ -107,7 +122,10 @@ section h2{font-size:clamp(40px,5.6vw,68px)}
 .offer p{color:var(--muted);font-size:16px}
 .offer .big{font:600 44px/1 var(--display);color:var(--terra)}
 .offer.hot .big{color:var(--lemon)}
-.offer .btn{margin-top:auto;align-self:flex-start;padding:12px 22px;font-size:15px}
+.orow{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:auto}
+.offer>.btn{margin-top:auto;align-self:flex-start}
+.offer .btn{padding:12px 22px;font-size:15px;white-space:nowrap}
+.offer .big{white-space:nowrap}
 .badge{width:max-content;background:var(--lemon);color:var(--ink);font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border-radius:20px;padding:4px 11px}
 #crea{background:var(--paper2);border-block:1px solid var(--line)}
 .build{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:center}
@@ -245,15 +263,18 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);color:var(--muted);
   .logo span{white-space:nowrap}.logo{font-size:23px}.logo small{display:none}.cartbtn{white-space:nowrap;padding:11px 18px}.status{font-size:13.5px}
   .feat .wrap{grid-template-columns:1fr 1fr}
   .f:nth-child(3){border-left:0}.f:nth-child(n+3){border-top:1px solid rgba(255,255,255,.14)}
-  nav{display:none}.cartbtn{margin-left:auto}
+  nav{display:none}.cartbtn{margin-left:auto}.burger{display:flex}#menu{display:block}header{position:sticky}.nav{gap:12px}
   section{padding:60px 0}
   .house .photo .mini{left:8px}
   .f2{grid-template-columns:1fr}
   .proof{flex-wrap:nowrap;justify-content:space-between;gap:10px;font-size:13px;line-height:1.3}.proof strong{font-size:30px}
   .f{padding:24px 18px}.f h3{font-size:22px}.f p{font-size:14px}
   .hours td{font-size:15px;padding:11px 0}.hours td:last-child{white-space:nowrap;font-size:14px}.hours tr.today td:first-child::after{content:none}.qrband{gap:18px;padding:22px}
+  .cl{display:none}.cartbtn{text-transform:capitalize;padding:10px 14px;gap:8px;font-size:14.5px}.logo img{height:42px}.logo{gap:8px}
+  .offer{padding:24px 22px}.offer .big{font-size:40px}.offer .btn{padding:12px 18px}
   .cta{flex-wrap:nowrap;gap:10px}.cta .btn{flex:1 1 0;justify-content:center;padding:14px 10px;font-size:15px;white-space:nowrap}.cta .btn svg{display:none}
 }
+@media (max-width:370px){.logo{font-size:20px}.logo img{height:36px;width:auto}.nav{gap:8px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -262,7 +283,12 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);color:var(--muted);
 <header><div class="wrap nav">
   <a class="logo" href="#top"><img src="logo.png" alt="Logo Trattoria Dolce Vita" width="42" height="46"><span>Dolce Vita<small>Trattoria · Hoyo de Manzanares</small></span></a>
   <nav aria-label="Principal"><a href="#carta">Carta</a><a href="#ofertas">Ofertas</a><a href="#casa">Nuestra casa</a><a href="#galeria">Galería</a><a href="#reservas">Reservas</a><a href="#horario">Horario y contacto</a></nav>
-  <button class="cartbtn" id="open" type="button">Tu pedido <b id="count">0</b></button>
+  <button class="cartbtn" id="open" type="button"><span class="cl">Tu </span>pedido <b id="count">0</b></button>
+  <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú"><span></span></button>
+</div>
+<div id="menu" role="navigation" aria-label="Secciones">
+  <a href="#carta">Carta</a><a href="#ofertas">Ofertas</a><a href="#crea">Monta tu pizza</a><a href="#casa">Nuestra casa</a><a href="#galeria">Galería</a><a href="#reservas">Reservas</a><a href="#horario">Horario y contacto</a>
+  <a class="btn" href="#carta" style="color:#fff;font:600 16px var(--body);border-bottom:0">Hacer mi pedido</a>
 </div></header>
 
 <main id="top">
@@ -315,8 +341,8 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);color:var(--muted);
 <section id="ofertas"><div class="wrap">
   <div class="head"><div><p class="eyebrow">Ofertas</p><h2>Lo que mueve la mesa.</h2><p class="sub">Promos fáciles de ver y de pedir. El restaurante las cambia cuando quiera.</p></div></div>
   <div class="offers">
-    <div class="offer hot"><h3>Crea tu pizza</h3><p>Tomate, mozzarella y 3 ingredientes a tu gusto. Hasta 5 en total.</p><div class="big">13,50 €</div><a class="btn lemon" href="#crea">Montar la mía</a></div>
-    <div class="offer"><h3>A domicilio por 1 €</h3><p>Te la llevamos a casa. Pedido mínimo de 15 € fuera del pueblo. También puedes recogerla en el local.</p><div class="big">1 €</div><a class="btn" href="#carta">Pedir ahora</a></div>
+    <div class="offer hot"><h3>Crea tu pizza</h3><p>Tomate, mozzarella y 3 ingredientes a tu gusto. Hasta 5 en total.</p><div class="orow"><div class="big">13,50 €</div><a class="btn lemon" href="#crea">Montar la mía</a></div></div>
+    <div class="offer"><h3>A domicilio por 1 €</h3><p>Te la llevamos a casa. Pedido mínimo de 15 € fuera del pueblo. También puedes recogerla en el local.</p><div class="orow"><div class="big">1 €</div><a class="btn" href="#carta">Pedir ahora</a></div></div>
     <div class="offer"><span class="badge">Ejemplo editable</span><h3>Oferta de la semana</h3><p>Aquí el restaurante publica su promo del momento, por ejemplo "2 pizzas medianas + bebida", con foto y fecha de fin.</p><a class="btn ghost" id="ofw" href="#" target="_blank" rel="noopener">Preguntar por la oferta</a></div>
   </div>
 </div></section>
@@ -599,6 +625,15 @@ $('ef').onsubmit=e=>{e.preventDefault();const r=$('rres');
   const a=document.createElement('a');a.className='btn lemon';a.textContent='Enviar petición por WhatsApp';a.target='_blank';a.rel='noopener';
   a.href='https://wa.me/34641883521?text='+encodeURIComponent(msg);
   r.append(t,a)};
+
+/* menu movil */
+const bg=$('burger'),mn=$('menu');
+function menu(o){mn.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);bg.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú')}
+bg.onclick=()=>menu(!mn.classList.contains('open'));
+mn.querySelectorAll('a').forEach(a=>a.onclick=()=>menu(false));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')menu(false)});
+document.addEventListener('click',e=>{if(mn.classList.contains('open')&&!mn.contains(e.target)&&!bg.contains(e.target))menu(false)});
+$('open').addEventListener('click',()=>menu(false));
 draw();renderCart();
 </script>
 </body>
