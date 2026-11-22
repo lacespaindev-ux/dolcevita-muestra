@@ -118,11 +118,15 @@ section h2{font-size:clamp(40px,5.6vw,68px)}
 .meter{display:flex;gap:6px;justify-content:center;margin:12px 0}
 .meter i{width:34px;height:8px;border-radius:6px;background:var(--line)}
 .meter i.on{background:var(--sea)}.meter i.ex{background:var(--terra)}
-.ings{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0 20px}
 .ing-b{border:1.5px solid var(--line);background:var(--card);border-radius:30px;padding:10px 18px;font:500 15.5px var(--body);cursor:pointer;transition:all .15s}
 .ing-b:hover{border-color:var(--sea)}
 .ing-b[aria-pressed="true"]{background:var(--sea);border-color:var(--sea);color:#fff}
 .ing-b:disabled{opacity:.4;cursor:not-allowed}
+
+.ings{display:grid;gap:18px;margin:18px 0 22px}
+.ig h4{font:600 13px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.igl{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.ing-b{text-align:center;padding:11px 10px;border-radius:14px}
 .build .rules{color:var(--muted);max-width:50ch}
 .seg{display:flex;background:var(--paper);border:1px solid var(--line);border-radius:40px;padding:4px;width:max-content;max-width:100%;margin-bottom:18px}
 .seg button{border:0;background:none;padding:9px 20px;border-radius:30px;font:600 15px var(--body);color:var(--muted);cursor:pointer}
@@ -130,7 +134,12 @@ section h2{font-size:clamp(40px,5.6vw,68px)}
 .qrband{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:28px;display:flex;gap:30px;align-items:center;flex-wrap:wrap;margin-top:40px}
 .qrband img{width:132px;height:132px;border-radius:12px;border:1px solid var(--line);padding:8px;background:#fff}
 .qrband h3{font-size:34px}.qrband p{color:var(--muted);max-width:52ch;margin-top:6px}
-@media (max-width:900px){.offers{grid-template-columns:1fr}.build{grid-template-columns:1fr;gap:26px}.preview{position:static}}
+@media (max-width:900px){.offers{grid-template-columns:1fr}.build{grid-template-columns:1fr;gap:26px}
+  .igl{grid-template-columns:1fr 1fr}.ing-b{font-size:15px;padding:12px 8px}
+  .preview{position:sticky;top:76px;z-index:6;display:grid;grid-template-columns:96px 1fr;gap:4px 16px;align-items:center;text-align:left;padding:12px 16px;border-radius:20px;box-shadow:var(--shadow)}
+  .preview svg{grid-row:1/4;width:96px}.preview .meter{justify-content:flex-start;margin:0}.preview .meter i{width:22px}
+  .preview .pr{font-size:34px;margin:0}.preview .pi{font-size:13px;min-height:0;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+}
 
 /* galeria */
 .gal{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:260px 260px;gap:14px}
@@ -233,13 +242,16 @@ footer{padding:40px 0 110px;border-top:1px solid var(--line);color:var(--muted);
 @media (max-width:900px){
   .hero,.house,.two,.info{grid-template-columns:minmax(0,1fr);gap:34px}
   .contact span{overflow-wrap:anywhere}
-  .logo small{display:none}.cartbtn{white-space:nowrap;padding:11px 18px}.status{font-size:13.5px}
+  .logo span{white-space:nowrap}.logo{font-size:23px}.logo small{display:none}.cartbtn{white-space:nowrap;padding:11px 18px}.status{font-size:13.5px}
   .feat .wrap{grid-template-columns:1fr 1fr}
   .f:nth-child(3){border-left:0}.f:nth-child(n+3){border-top:1px solid rgba(255,255,255,.14)}
   nav{display:none}.cartbtn{margin-left:auto}
   section{padding:60px 0}
   .house .photo .mini{left:8px}
   .f2{grid-template-columns:1fr}
+  .proof{flex-wrap:nowrap;justify-content:space-between;gap:10px;font-size:13px;line-height:1.3}.proof strong{font-size:30px}
+  .f{padding:24px 18px}.f h3{font-size:22px}.f p{font-size:14px}
+  .hours td{font-size:15px;padding:11px 0}.hours td:last-child{white-space:nowrap;font-size:14px}.hours tr.today td:first-child::after{content:none}.qrband{gap:18px;padding:22px}
   .cta{flex-wrap:nowrap;gap:10px}.cta .btn{flex:1 1 0;justify-content:center;padding:14px 10px;font-size:15px;white-space:nowrap}.cta .btn svg{display:none}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
@@ -561,10 +573,14 @@ function drawBuild(){
   $('bp').textContent=fmt(price);
   $('bi').textContent=n?[...sel].map(i=>ING[i][0]).join(', ')+(n>INCL?' · '+(n-INCL)+(n-INCL>1?' extras':' extra')+' de 1 €':''):'Elige al menos un ingrediente.';
   $('meter').innerHTML=Array.from({length:MAXI},(_,i)=>`<i class="${i<n?(i>=INCL?'ex':'on'):''}"></i>`).join('');
-  document.querySelectorAll('.ing-b').forEach((b,i)=>{b.setAttribute('aria-pressed',sel.has(i));b.disabled=!sel.has(i)&&n>=MAXI});
+  document.querySelectorAll('.ing-b').forEach(b=>{const i=+b.dataset.i;b.setAttribute('aria-pressed',sel.has(i));b.disabled=!sel.has(i)&&n>=MAXI});
   $('badd').disabled=!n;
 }
-ING.forEach((g,i)=>{const b=document.createElement('button');b.type='button';b.className='ing-b';b.textContent=g[0];b.onclick=()=>{sel.has(i)?sel.delete(i):sel.add(i);drawBuild()};$('ings').appendChild(b)});
+const GROUPS=[['Carnes y embutidos',['Jamón york','Jamón serrano','Bacon','Salami picante','Pollo','Carne picada','Salchicha ahumada']],['Verduras',['Champiñón','Cebolla','Pimiento rojo','Aceitunas negras','Alcachofa','Tomate fresco','Rúcula','Albahaca']],['Quesos',['Queso azul','Queso de cabra','Parmesano']],['Pescado y otros',['Atún','Anchoas','Huevo fresco','Piña']]];
+$('ings').innerHTML='';
+GROUPS.forEach(([t,names])=>{const g=document.createElement('div');g.className='ig';g.innerHTML='<h4>'+t+'</h4>';const w=document.createElement('div');w.className='igl';
+  names.forEach(nm=>{const i=ING.findIndex(x=>x[0]===nm);const b=document.createElement('button');b.type='button';b.className='ing-b';b.dataset.i=i;b.textContent=nm;b.onclick=()=>{sel.has(i)?sel.delete(i):sel.add(i);drawBuild()};w.appendChild(b)});
+  g.appendChild(w);$('ings').appendChild(g)});
 $('badd').onclick=()=>{const n=sel.size;if(!n)return;const note=$('bn').value.trim();
   CUSTOM.push({n:'Pizza mitad y mitad',d:'Tomate, mozzarella, '+[...sel].map(i=>ING[i][0].toLowerCase()).join(', ')+(note?'. '+note:''),price:BASE+Math.max(0,n-INCL)});
   const k='cust|'+(CUSTOM.length-1);cart[k]=1;renderCart();const t=$('badd');t.textContent='Añadida ✓';setTimeout(()=>t.textContent='Añadir a mi pedido',1300);openD()};
